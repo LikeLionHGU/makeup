@@ -11,9 +11,9 @@ function App() {
           <Route path="/" element={<Main />}></Route>
           <Route path="/login" element={<Login />}></Route>
         </Routes>
+
       </BrowserRouter>
     </div>
   );
 }
-
 export default App;
