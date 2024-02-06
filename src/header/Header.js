@@ -22,10 +22,14 @@ export default function Header() {
       </span>
       <span className={styles.icon}>
         <span id={styles.chat}>
-          <img src={chatimg} />
+          <button>
+            <img src={chatimg} />
+          </button>
         </span>
         <span id={styles.notice}>
-          <img src={bellimg} />
+          <button>
+            <img src={bellimg} />
+          </button>
         </span>
         <span id={styles.profile}>
           <img src={profile} />
