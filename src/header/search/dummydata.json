@@ -1,0 +1,94 @@
+{
+  "data": [
+    {
+      "post_id": "1",
+      "member_id": "1",
+      "title": "Post 1",
+      "body": "글 내용인데요",
+      "nickname": "이름 1",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "웜톤"
+    },
+    {
+      "post_id": "2",
+      "member_id": "2",
+      "title": "Post 2",
+      "body": "더미데이터입니다.",
+      "nickname": "이름 2",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "쿨톤"
+    },
+    {
+      "post_id": "3",
+      "member_id": "3",
+      "title": "Post 3",
+      "body": "더미데이터 예시입니다.",
+      "nickname": "이름 3",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "웜톤"
+    },
+    {
+      "post_id": "4",
+      "member_id": "4",
+      "title": "Post 4",
+      "body": "더미데이터 생성 중입니다.",
+      "nickname": "이름 4",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "네추럴톤"
+    },
+    {
+      "post_id": "5",
+      "member_id": "5",
+      "title": "Post 5",
+      "body": "더미데이터입니다.",
+      "nickname": "이름 5",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "웜톤"
+    },
+    {
+      "post_id": "6",
+      "member_id": "6",
+      "title": "Post 6",
+      "body": "더미데이터 예시입니다.",
+      "nickname": "이름 6",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "쿨톤"
+    },
+    {
+      "post_id": "7",
+      "member_id": "7",
+      "title": "Post 7",
+      "body": "더미데이터 생성 중입니다.",
+      "nickname": "이름 7",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "웜톤"
+    },
+    {
+      "post_id": "8",
+      "member_id": "8",
+      "title": "Post 8",
+      "body": "더미데이터입니다.",
+      "nickname": "이름 8",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "네추럴톤"
+    },
+    {
+      "post_id": "9",
+      "member_id": "9",
+      "title": "Post 9",
+      "body": "더미데이터 예시입니다.",
+      "nickname": "이름 9",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "웜톤"
+    },
+    {
+      "post_id": "10",
+      "member_id": "10",
+      "title": "Post 10",
+      "body": "더미데이터 생성 중입니다.",
+      "nickname": "이름 10",
+      "post_img": "https://placehold.co/600x400",
+      "tag": "쿨톤"
+    }
+  ]
+}
