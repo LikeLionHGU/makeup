@@ -1,0 +1,132 @@
+{
+  "dummy": [
+    {
+      "photo_id": "1",
+      "post_id": "1001",
+      "user_id": "user123",
+      "photo_url": "https://www.iwedding.co.kr/center/iweddingb/product/800_co_sl_m209_14018_1636683168_12733300_3232256100.jpg",
+      "title": "친구들",
+      "content": "친구들"
+    },
+    {
+      "photo_id": "2",
+      "post_id": "1002",
+      "user_id": "user456",
+      "photo_url": "https://post-phinf.pstatic.net/MjAyMTExMTFfMTk3/MDAxNjM2NjA5MzA2OTI4.VdO2uxa2N40q5tA2WG_tW1QiCKozFOdhZSU1XjJ0twQg.rtnd0Srt6FIzgFmGDf_22JSy_v1P-4g05XD7usIrOrcg.JPEG/1.jpg?type=w800_q75",
+      "title": "반갑다",
+      "content": "반갑다"
+    },
+    {
+      "photo_id": "3",
+      "post_id": "1003",
+      "user_id": "user789",
+      "photo_url": "https://img.marieclairekorea.com/2021/03/mck_603de7157fb2d.jpg",
+      "title": "됐다",
+      "content": "됐다"
+    },
+    {
+      "photo_id": "4",
+      "post_id": "1004",
+      "user_id": "user123",
+      "photo_url": "https://cdn.imweb.me/thumbnail/20220816/a83bc5a4862b7.png",
+      "title": "스마일",
+      "content": "스마일"
+    },
+    {
+      "photo_id": "5",
+      "post_id": "1005",
+      "user_id": "user456",
+      "photo_url": "https://www.thefirstmedia.net/news/photo/202009/63343_45703_329.jpg",
+      "title": "새드",
+      "content": "새드"
+    },
+    {
+      "photo_id": "6",
+      "post_id": "1006",
+      "user_id": "user789",
+      "photo_url": "https://www.cmn.co.kr/webupload/ckeditor/images/20200921_130028_0735134.jpg",
+      "title": "해피",
+      "content": "해피"
+    },
+    {
+      "photo_id": "7",
+      "post_id": "1007",
+      "user_id": "user123",
+      "photo_url": "https://www.iwedding.co.kr/center/iweddingb/product/800_co_sl_m013_3185_1656307539_57094700_3232256100.jpg",
+      "title": "야야",
+      "content": "야야"
+    },
+    {
+      "photo_id": "8",
+      "post_id": "1008",
+      "user_id": "user456",
+      "photo_url": "https://cdn.slist.kr/news/photo/202101/222369_375692_4524.jpg",
+      "title": "유후",
+      "content": "유후"
+    },
+    {
+      "photo_id": "9",
+      "post_id": "1009",
+      "user_id": "user789",
+      "photo_url": "https://tbc.imgdl.xcache.kinxcdn.com/cdn001/20220228/46644892_0302-beauty9.jpg",
+      "title": "집",
+      "content": "집"
+    },
+    {
+      "photo_id": "10",
+      "post_id": "1010",
+      "user_id": "user123",
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjt7sMMUiWtpIsZ_qD0mg-k_EQTqpGD8478w&usqp=CAU",
+      "title": "가고싶다",
+      "content": "가고싶다"
+    },
+    {
+      "photo_id": "11",
+      "post_id": "1011",
+      "user_id": "user456",
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfpjvVRQGa0bqRpOlZh8Icph8g_BFSb_xbpA&usqp=CAU",
+      "title": "홈",
+      "content": "홈"
+    },
+    {
+      "photo_id": "12",
+      "post_id": "1012",
+      "user_id": "user789",
+      "photo_url": "https://www.cmn.co.kr/webupload/ckeditor/images/20230428_104652_0687481_800.jpg",
+      "title": "긱사",
+      "content": "긱사"
+    },
+    {
+      "photo_id": "13",
+      "post_id": "1013",
+      "user_id": "user123",
+      "photo_url": "https://image.msscdn.net/mfile_s01/_magazine/cover622039be6f836.jpg?ver=20220307090720",
+      "title": "밥",
+      "content": "밥"
+    },
+    {
+      "photo_id": "14",
+      "post_id": "1014",
+      "user_id": "user456",
+      "photo_url": "https://www.iwedding.co.kr/center/iweddingb/product/800_co_sl_m120_2990_1590367047_32918800_3232256099.jpg",
+      "title": "배고파",
+      "content": "배고파"
+    },
+    {
+      "photo_id": "15",
+      "post_id": "1015",
+      "user_id": "user789",
+      "photo_url": "https://image.chosun.com/sitedata/image/201908/30/2019083000855_0.jpg",
+      "title": "놀고싶다",
+      "content": "놀고싶다"
+    },
+    {
+      "photo_id": "16",
+      "post_id": "1016",
+      "user_id": "user123",
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVzcUWiznS5bAw4QlUdvksAvTBb_6ueJB0HA&usqp=CAU",
+      "title": "히히",
+      "content": "히히"
+    }
+  ]
+}

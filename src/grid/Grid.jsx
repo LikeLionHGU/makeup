@@ -9,7 +9,7 @@ function Grid() {
   const [data, setData] = useState(dummy.data);
 
   const handleContainerClick = (num) => {
-    navigate("/addprofile/" + num);
+    navigate("/post/" + num);
   };
 
   if (!data) return <>loading...</>;
@@ -23,7 +23,7 @@ function Grid() {
             {[...Array(4)].map((_, colIndex) => {
               const itemIndex = rowIndex * 4 + colIndex;
               const item = data[itemIndex];
-              if (!item) return null; // In case data is less than 16 items
+              if (!item) return null;
               return (
                 <div
                   key={item.photo_id}
