@@ -3,8 +3,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./Main";
 
 import Login from "./header/login/Login";
+
 import BoardWrite from "./write/BoardWrite";
 import BoardList from "./board/BoardList";
+
+import SignUp from "./account/SignUp";
+
 
 function App() {
   return (
@@ -12,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />
