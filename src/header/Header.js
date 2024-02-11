@@ -18,7 +18,9 @@ export default function Header() {
         <Search></Search>
       </span>
       <span id={styles.post}>
-        <button>내 메컵 공유</button>
+        <Link to="/write">
+          <button>내 메컵 공유</button>
+        </Link>
       </span>
       <span className={styles.icon}>
         <span id={styles.chat}>
