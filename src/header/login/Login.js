@@ -9,9 +9,9 @@ export default function Login() {
 
   return (
     <div>
-      <button type="button" onClick={loginHandler}>
+      {/* <button type="button" onClick={loginHandler}>
         카카오 로그인
-      </button>
+      </button> */}
     </div>
   );
 }
