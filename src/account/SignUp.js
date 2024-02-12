@@ -11,6 +11,7 @@ const SignUp = () => {
   const [passwordinput, setPasswordinput] = useState("");
   const [genderinput, setGenderinput] = useState("");
   const [birthdateinput, setBirthdateinput] = useState("");
+
   const [message, setMessage] = useState("");
 
   const registeraxios = () => {
