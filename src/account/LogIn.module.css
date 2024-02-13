@@ -4,7 +4,7 @@
 } */
 
 .login {
-  padding-left: 16.3%;
+  padding-left: 30vh;
   padding-right: 24.7vh;
 }
 
@@ -19,13 +19,13 @@
 .login_header {
   padding-top: 127px;
   /* padding-bottom: 107.33px; */
-  padding-left: 7%;
-  padding-right: 7%;
+  padding-left: 10vh;
+  padding-right: 10vh;
 }
 
 .input {
-  padding-left: 32%;
-  padding-right: 32%;
+  padding-left: 45vh;
+  padding-right: 45vh;
   padding-top: 107px;
   padding-bottom: 165px;
 }
@@ -37,8 +37,6 @@
   border: 1px solid black;
   padding-left: 20px;
   padding-right: 20px;
-  margin-left: 6%;
-  margin-right: 6%;
   margin-bottom: 15px;
 }
 

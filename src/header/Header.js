@@ -34,12 +34,11 @@ export default function Header() {
           </button>
         </span>
         <span id={styles.profile}>
-          <img src={profile} />
+          <Link to="/login">
+            <img src={profile} />
+          </Link>
         </span>
       </span>
-      {/* <Link to="/login">
-        <button>로그인</button>
-      </Link> */}
     </div>
   );
 }

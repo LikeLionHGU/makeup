@@ -6,6 +6,8 @@ import BoardWrite from "./write/BoardWrite";
 import BoardList from "./board/BoardList";
 import LogIn from "./account/LogIn";
 import SignUp from "./account/SignUp";
+import Register from "./account/Register";
+import Complete from "./account/Complete";
 
 function App() {
   return (
@@ -14,7 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/complete" element={<Complete />}></Route>
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />
         </Routes>
