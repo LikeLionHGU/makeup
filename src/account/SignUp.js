@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Header from "../header/Header";
+import styles from "./SignUp.module.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -37,92 +39,101 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup">
-      <div className="signup_input">
-        <label>화알못에서 사용할 닉네임을 알려주세요</label>
-        <br />
-        <input
-          type="text"
-          placeholder="username..."
-          onChange={(e) => {
-            setUsernameinput(e.target.value);
-          }}
-        />
-        <p>
-          한글, 영문, 숫자(2~10자) <br />
-          닉네임은 피드, 댓글 작성 등 활동을 할 때 표시됩니다. <br />
-          닉네임은 한 번 정하면 변경할 수 없습니다.
-        </p>
-      </div>
+    <div>
+      <Header></Header>
+      <div className={styles.signup}>
+        <div className={styles.signup_rect}>
+          <div className={styles.signup_button}>
+            <div className={styles.rect}></div>
+            <div className={styles.arrow}></div>
+          </div>
+          <div className={styles.signup_input}>
+            <label>화알못에서 사용할 닉네임을 알려주세요</label>
+            <br />
+            <input
+              type="text"
+              placeholder="username..."
+              onChange={(e) => {
+                setUsernameinput(e.target.value);
+              }}
+            />
+            <p>
+              한글, 영문, 숫자(2~10자) <br />
+              닉네임은 피드, 댓글 작성 등 활동을 할 때 표시됩니다. <br />
+              닉네임은 한 번 정하면 변경할 수 없습니다.
+            </p>
+          </div>
 
-      <div className="signup_input">
-        <label>Email</label>
-        <br />
-        <input
-          type="text"
-          placeholder="email..."
-          onChange={(e) => {
-            setEmailinput(e.target.value);
-          }}
-          className={!message ? "inputLogin" : "err_password"}
-        />
-      </div>
+          <div className="signup_input">
+            <label>Email</label>
+            <br />
+            <input
+              type="text"
+              placeholder="email..."
+              onChange={(e) => {
+                setEmailinput(e.target.value);
+              }}
+              className={!message ? "inputLogin" : "err_password"}
+            />
+          </div>
 
-      <div className="signup_input">
-        <label>비밀번호</label>
-        <br />
-        <input
-          type="password"
-          placeholder="password..."
-          onChange={(e) => {
-            setPasswordinput(e.target.value);
-          }}
-          className={!message ? "inputLogin" : "err_password"}
-        />
-        <p>{message}</p>
-      </div>
+          <div className="signup_input">
+            <label>비밀번호</label>
+            <br />
+            <input
+              type="password"
+              placeholder="password..."
+              onChange={(e) => {
+                setPasswordinput(e.target.value);
+              }}
+              className={!message ? "inputLogin" : "err_password"}
+            />
+            <p>{message}</p>
+          </div>
 
-      <div className="signup_input">
-        <label>생년월일</label>
-        <br />
-        <input
-          type="birthdate"
-          placeholder="xxxxxx"
-          onChange={(e) => {
-            setBirthdateinput(e.target.value);
-          }}
-          className={!message ? "inputLogin" : "err_birthdate"}
-        />
-      </div>
+          <div className="signup_input">
+            <label>생년월일</label>
+            <br />
+            <input
+              type="birthdate"
+              placeholder="xxxxxxxx"
+              onChange={(e) => {
+                setBirthdateinput(e.target.value);
+              }}
+              className={!message ? "inputLogin" : "err_birthdate"}
+            />
+          </div>
 
-      <div className="signup_input">
-        <label>성별</label>
-        <br />
-        <label>남성</label>
-        <input
-          type="radio"
-          name="gender"
-          onChange={(e) => {
-            console.log(true);
-            setGenderinput(e.target.value);
-          }}
-          className={!message ? "inputLogin" : "err_gender"}
-          value="male"
-        />
-        <br />
-        <label>여성</label>
-        <input
-          type="radio"
-          name="gender"
-          onChange={(e) => {
-            console.log(false);
-            setGenderinput(e.target.value);
-          }}
-          className={!message ? "inputLogin" : "err_gender"}
-          value="female"
-        />
+          <div className="signup_input">
+            <label>성별</label>
+            <br />
+            <label>남성</label>
+            <input
+              type="radio"
+              name="gender"
+              onChange={(e) => {
+                console.log(true);
+                setGenderinput(e.target.value);
+              }}
+              className={!message ? "inputLogin" : "err_gender"}
+              value="male"
+            />
+            <br />
+            <label>여성</label>
+            <input
+              type="radio"
+              name="gender"
+              onChange={(e) => {
+                console.log(false);
+                setGenderinput(e.target.value);
+              }}
+              className={!message ? "inputLogin" : "err_gender"}
+              value="female"
+            />
+          </div>
+          <button onClick={registeraxios}>singup</button>
+        </div>
       </div>
-      <button onClick={registeraxios}>singup</button>
     </div>
   );
 };

@@ -1,7 +1,10 @@
 // import "./Login.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import headerimg from "./header1.png";
+import Header from "../header/Header";
+import styles from "./LogIn.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,35 +38,51 @@ const Login = () => {
 
   return (
     <div>
-      <div className="Login">
-        <div className="inputemail">
-          <label>username</label>
-          <br />
-          <input
-            type="text"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            className={!message ? "inputLogin" : "err_password"}
-            placeholder="username..."
-          />
+      <Header></Header>
+      <div className={styles.login}>
+        <div className={styles.login_rect}>
+          <div className={styles.login_header}>
+            <img src={headerimg} />
+          </div>
+          <div className={styles.input}>
+            <div className={styles.inputemail}>
+              <br />
+              <input
+                type="text"
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                className={!message ? "inputLogin" : "err_password"}
+                placeholder="아이디(이메일)"
+              />
+            </div>
+
+            <div className={styles.inputpassword}>
+              <br />
+              <input
+                type="password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                className={!message ? "inputLogin" : "err_password"}
+                placeholder="비밀번호"
+              />
+              <p className="err">{message}</p>
+            </div>
+
+            <div className={styles.btn}>
+              <button className={styles.buttonlogin} onClick={loginaxios}>
+                로그인
+              </button>
+            </div>
+            <br />
+            <div className={styles.btn}>
+              <Link to="/signup">
+                <button className={styles.buttonsignup}>회원가입</button>
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="inputpassword">
-          <label>password</label>
-          <br />
-          <input
-            type="password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            className={!message ? "inputLogin" : "err_password"}
-            placeholder="password..."
-          />
-          <p className="err">{message}</p>
-        </div>
-        <button className="buttonlogin" onClick={loginaxios}>
-          Login
-        </button>
       </div>
     </div>
   );
