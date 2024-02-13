@@ -1,0 +1,21 @@
+.signup {
+  padding-left: 16.3%;
+  padding-right: 24.7vh;
+}
+
+.signup_rect {
+  border-radius: 30px;
+  border: 2px solid black;
+}
+
+.signup_button {
+}
+.rect {
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+}
+.arrow {
+  border-right: 0;
+  border-left: 20px solid purple; /* 화살표 */
+}
