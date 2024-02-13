@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import headerimg from "./header1.png";
 import Header from "../header/Header";
-import styles from "./LogIn.module.css";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
