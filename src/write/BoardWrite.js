@@ -30,10 +30,6 @@ const BoardWrite = () => {
     navigate("/board");
   };
 
-  const backToList = () => {
-    navigate("/board");
-  };
-
   const imageInput = useRef();
   const onCickImageUpload = () => {
     imageInput.current.click();
@@ -75,15 +71,28 @@ const BoardWrite = () => {
         )}
         {image && (
           <span className={styles.photo}>
-            <img src={image} alt="Uploaded" style={{ maxWidth: "100px" }} />
+            <img
+              src={image}
+              alt="Uploaded"
+              style={{
+                maxWidth: "460px",
+                maxHeight: "580px",
+                borderRadius: "40px",
+                marginTop: "25px",
+                marginBottom: "25px",
+                marginLeft: "25px",
+              }}
+            />
           </span>
         )}
 
         <span className={styles.title}>
-          <input
+          <textarea
             type="text"
             name="title"
             value={title}
+            cols="20"
+            rows="10"
             onChange={onChange}
             placeholder="제목 입력하기"
           />
@@ -100,8 +109,14 @@ const BoardWrite = () => {
         </span>
 
         <div className={styles.buttonContainer}>
-          <button onClick={saveBoard}>작성 완료</button>
-          <button onClick={backToList}>X</button>
+          <div className={styles.line}></div>
+          <span className={styles.save}>
+            <button onClick={saveBoard}>작성 완료</button>
+          </span>
+          <span className={styles.date}>
+            <button onClick={saveBoard}>날짜 설정</button>
+          </span>
+          {/* 날짜 설정 페이지로 이동하기 */}
         </div>
       </div>
     </div>
