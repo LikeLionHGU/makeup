@@ -1,0 +1,7 @@
+.calendar {
+  display: flex;
+}
+
+.timeinput {
+  border: none;
+}
