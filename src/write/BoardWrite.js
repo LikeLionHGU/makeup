@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./BoardWrite.module.css";
+import { Route, Routes } from "react-router-dom";
+import Header from "../header/Header";
+import photoimg from "./Group 9.png";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
@@ -11,22 +15,13 @@ const BoardWrite = () => {
     image: null, // 이미지 파일을 담을 상태 추가
   });
 
-  const { title, contents } = board;
+  const { title, contents, image } = board;
 
   const onChange = (event) => {
     const { value, name } = event.target;
     setBoard({
       ...board,
       [name]: value,
-    });
-  };
-
-  // 이미지 파일 선택 시 실행되는 함수
-  const onFileChange = (event) => {
-    const file = event.target.files[0];
-    setBoard({
-      ...board,
-      image: file,
     });
   };
 
@@ -39,32 +34,75 @@ const BoardWrite = () => {
     navigate("/board");
   };
 
+  const imageInput = useRef();
+  const onCickImageUpload = () => {
+    imageInput.current.click();
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setBoard({
+          ...board,
+          image: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div>
-      <div>
-        <span>제목</span>
-        <input type="text" name="title" value={title} onChange={onChange} />
-      </div>
-      <br />
-      <div>
-        <span>내용</span>
-        <textarea
-          name="contents"
-          cols="30"
-          rows="10"
-          value={contents}
-          onChange={onChange}
-        ></textarea>
-      </div>
-      <br />
-      <div>
-        <span>사진 업로드</span>
-        <input type="file" onChange={onFileChange} />
-      </div>
-      <br />
-      <div>
-        <button onClick={saveBoard}>저장</button>
-        <button onClick={backToList}>취소</button>
+      <Routes>
+        <Route path="/" element={<Header />} />
+      </Routes>
+
+      <div className={styles.rect}>
+        {image ? null : (
+          <span className={styles.button}>
+            <input
+              type="file"
+              style={{ display: "none" }}
+              ref={imageInput}
+              onChange={handleImageChange}
+            />
+            <button onClick={onCickImageUpload}>
+              <img alt="photo01" src={photoimg} />
+            </button>
+          </span>
+        )}
+        {image && (
+          <span className={styles.photo}>
+            <img src={image} alt="Uploaded" style={{ maxWidth: "100px" }} />
+          </span>
+        )}
+
+        <span className={styles.title}>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={onChange}
+            placeholder="제목 입력하기"
+          />
+        </span>
+        <span className={styles.contents}>
+          <textarea
+            name="contents"
+            cols="50"
+            rows="10"
+            value={contents}
+            onChange={onChange}
+            placeholder="사용한 화장품 리스트를 알려주세요."
+          ></textarea>
+        </span>
+
+        <div className={styles.buttonContainer}>
+          <button onClick={saveBoard}>작성 완료</button>
+          <button onClick={backToList}>X</button>
+        </div>
       </div>
     </div>
   );
