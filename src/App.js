@@ -7,6 +7,7 @@ import BoardList from "./board/BoardList";
 import LogIn from "./account/LogIn";
 import SignUp from "./account/SignUp";
 import Register from "./account/Register";
+import Calendar from "./calendar/Calendar";
 import Complete from "./account/Complete";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
+          <Route path="/calendar" element={<Calendar />}></Route>
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />
         </Routes>
