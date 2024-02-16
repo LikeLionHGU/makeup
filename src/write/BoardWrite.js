@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./BoardWrite.module.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "../header/Header";
@@ -114,7 +114,9 @@ const BoardWrite = () => {
             <button onClick={saveBoard}>작성 완료</button>
           </span>
           <span className={styles.date}>
-            <button onClick={saveBoard}>날짜 설정</button>
+            <Link to="/calendar">
+              <button onClick={saveBoard}>날짜 설정</button>
+            </Link>
           </span>
           {/* 날짜 설정 페이지로 이동하기 */}
         </div>
