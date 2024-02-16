@@ -31,16 +31,18 @@ export default function Search() {
 
   return (
     <div>
-      <input type="text" value={search} onChange={onChange}></input>
       <div className="content">
-        {filterResult.map((member) => (
-          <div>
-            <span>{member.title} </span>
-            <span> {member.body} </span>
-            <span> #{member.tag} </span>
-            <span> {member.nickname}</span>
-          </div>
-        ))}
+        <input type="text" value={search} onChange={onChange}></input>
+        {search !== "" &&
+          filterResult
+            .filter((member) => member !== null)
+            .map((member) => (
+              <div>
+                <span>{member.title} </span>
+                <span> {member.body} </span>
+                <span> {member.nickname}</span>
+              </div>
+            ))}
       </div>
     </div>
   );

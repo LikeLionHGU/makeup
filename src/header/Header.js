@@ -12,7 +12,9 @@ export default function Header() {
   return (
     <div className={styles.header}>
       <span className={styles.logo}>
-        <img src={logoimg} />
+        <Link to="/">
+          <img src={logoimg} />
+        </Link>
       </span>
       <span id={styles.search}>
         <Search></Search>
