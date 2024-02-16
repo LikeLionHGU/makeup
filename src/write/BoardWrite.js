@@ -4,6 +4,7 @@ import styles from "./BoardWrite.module.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "../header/Header";
 import photoimg from "./Group 9.png";
+import Modal from "../modal/modal";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
@@ -49,6 +50,15 @@ const BoardWrite = () => {
     }
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div>
       <Routes>
@@ -56,7 +66,6 @@ const BoardWrite = () => {
       </Routes>
 
       <div className={styles.rect}>
-
         <div className={styles.left}>
           {image ? (
             <div className={styles.photo}>
@@ -102,14 +111,19 @@ const BoardWrite = () => {
           <div className={styles.buttonContainer}>
             <div className={styles.line}></div>
             <div className={styles.save}>
-              <button onClick={saveBoard}>작성 완료</button>
+              <React.Fragment>
+                <button onClick={openModal}>작성 완료</button>
+
+                <Modal open={modalOpen} close={closeModal}>
+                  피드 작성이 완료되었습니다!
+                </Modal>
+              </React.Fragment>
             </div>
             <div className={styles.date}>
               <button onClick={saveBoard}>날짜 설정</button>
             </div>
             {/* 날짜 설정 페이지로 이동하기 */}
           </div>
-
         </div>
       </div>
     </div>
