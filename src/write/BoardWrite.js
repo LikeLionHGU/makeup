@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./BoardWrite.module.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "../header/Header";
@@ -56,6 +56,7 @@ const BoardWrite = () => {
       </Routes>
 
       <div className={styles.rect}>
+
         <div className={styles.left}>
           {image ? (
             <div className={styles.photo}>
@@ -108,6 +109,7 @@ const BoardWrite = () => {
             </div>
             {/* 날짜 설정 페이지로 이동하기 */}
           </div>
+
         </div>
       </div>
     </div>
