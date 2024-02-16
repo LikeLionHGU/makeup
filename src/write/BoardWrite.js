@@ -101,7 +101,7 @@ const BoardWrite = () => {
           <textarea
             name="contents"
             cols="50"
-            rows="10"
+            rows="20"
             value={contents}
             onChange={onChange}
             placeholder="사용한 화장품 리스트를 알려주세요."
