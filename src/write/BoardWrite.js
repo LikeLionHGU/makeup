@@ -90,7 +90,9 @@ const BoardWrite = () => {
   const noFeedMessage =
     additionalInfo.length === 0 && !contents ? (
       <p>
-        <img src={Basket} alt="basketimg"></img>
+        <div className={styles.feed}>
+          <img src={Basket} alt="basketimg"></img>
+        </div>
         <br />
         <div className={styles.text}>작성된 피드가 없습니다.</div>
       </p>

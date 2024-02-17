@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Grid.module.css";
 import dummy from "./data.json";
+import heart from "./heart.png";
 
 function Grid() {
   const navigate = useNavigate();
@@ -16,8 +17,10 @@ function Grid() {
 
   return (
     <div>
-      <h2 className={styles.text}>최근에 올라온 피드</h2>
+      {/* <h2 className={styles.text}>최근에 올라온 피드</h2> */}
+
       <div className={styles.container}>
+        {" "}
         {[...Array(4)].map((_, rowIndex) => (
           <div key={rowIndex} className={styles.row}>
             {[...Array(4)].map((_, colIndex) => {
@@ -25,13 +28,20 @@ function Grid() {
               const item = data[itemIndex];
               if (!item) return null;
               return (
-                <div
-                  key={item.photo_id}
-                  className={styles.rect}
-                  onClick={() => handleContainerClick(item.photo_id)}
-                  style={{ backgroundImage: `url(${item.photo_url})` }}
-                >
-                  <div className={styles.hoverText}>{item.text}</div>
+                <div className={styles.bottom}>
+                  <div
+                    key={item.photo_id}
+                    className={styles.rect}
+                    onClick={() => handleContainerClick(item.photo_id)}
+                    style={{ backgroundImage: `url(${item.photo_url})` }}
+                  >
+                    <div className={styles.hoverText}>{item.text}</div>
+                    <img
+                      src={heart}
+                      alt="heartimg"
+                      className={styles.heart}
+                    ></img>
+                  </div>{" "}
                 </div>
               );
             })}
