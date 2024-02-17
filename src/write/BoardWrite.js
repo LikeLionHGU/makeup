@@ -5,7 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../header/Header";
 import photoimg from "./Group 9.png";
 import Modal from "../modal/modal";
-import Delete from "./삭제.png";
+import Delete from "./delete.png";
+import Basket from "./basket.png";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
@@ -86,6 +87,15 @@ const BoardWrite = () => {
     setModalOpen(false);
   };
 
+  const noFeedMessage =
+    additionalInfo.length === 0 && !contents ? (
+      <p>
+        <img src={Basket} alt="basketimg"></img>
+        <br />
+        <div className={styles.text}>작성된 피드가 없습니다.</div>
+      </p>
+    ) : null;
+
   return (
     <div>
       <Routes>
@@ -151,12 +161,13 @@ const BoardWrite = () => {
                       className={styles.deleteBtn}
                       onClick={() => onDeleteInfo(index)}
                     >
-                      <img src={Delete}></img>
+                      <img src={Delete} alt="delteBtn"></img>
                     </button>
                     <div className={styles.line}></div>
                   </div>
                 ))}
               </ul>
+              <div className={styles.feed}>{noFeedMessage}</div>
             </div>
           </div>
           <div className={styles.buttonContainer}>

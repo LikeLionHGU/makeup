@@ -142,7 +142,6 @@
   max-height: 350px;
   margin-top: 37px;
 }
-
 .brand,
 .product {
   border-color: #fc389a;
@@ -157,6 +156,10 @@
   font-family: "Pretendard-Regular";
 }
 
+.brand:focus,
+.product:focus {
+  outline: #fc389a;
+}
 .brand {
   margin-left: 20px;
 }
@@ -203,4 +206,27 @@
   font-weight: 400;
   margin-bottom: 0px;
   margin-top: 0px;
+}
+
+ul::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(252, 56, 154, 0.3); /* 스크롤바 트랙의 배경색 */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fc389a;
+  border-radius: 50px;
+}
+
+.feed {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.feed .text {
+  padding-top: 16px;
 }
