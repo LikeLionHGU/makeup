@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../header/Header";
 import photoimg from "./Group 9.png";
 import Modal from "../modal/modal";
+import Delete from "./삭제.png";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
@@ -13,16 +14,43 @@ const BoardWrite = () => {
     title: "",
     createdBy: "",
     contents: "",
-    image: null, // 이미지 파일을 담을 상태 추가
+    image: null,
+    additionalInfo: [],
   });
 
-  const { title, contents, image } = board;
+  const { title, createdBy, contents, image, additionalInfo } = board;
 
   const onChange = (event) => {
     const { value, name } = event.target;
     setBoard({
       ...board,
       [name]: value,
+    });
+  };
+
+  const onAddInfo = () => {
+    if (contents && createdBy) {
+      setBoard((prevBoard) => ({
+        ...prevBoard,
+        additionalInfo: [
+          ...prevBoard.additionalInfo,
+          { brand: createdBy, product: contents },
+        ],
+        contents: "",
+        createdBy: "",
+      }));
+    }
+  };
+
+  const onDeleteInfo = (index) => {
+    setBoard((prevBoard) => {
+      const updatedInfo = [...prevBoard.additionalInfo];
+      updatedInfo.splice(index, 1);
+
+      return {
+        ...prevBoard,
+        additionalInfo: updatedInfo,
+      };
     });
   };
 
@@ -94,22 +122,45 @@ const BoardWrite = () => {
                 value={title}
                 rows="2"
                 onChange={onChange}
-                placeholder="제목 입력하기"
+                placeholder="제목을 입력해주세요. "
               />
             </div>
             <div className={styles.contents}>
-              <textarea
+              <input
+                className={styles.brand}
+                name="createdBy"
+                value={createdBy}
+                onChange={onChange}
+                placeholder="브랜드명"
+              />
+              <input
+                className={styles.product}
                 name="contents"
-                cols="50"
-                rows="20"
                 value={contents}
                 onChange={onChange}
-                placeholder="사용한 화장품 리스트를 알려주세요."
-              ></textarea>
+                placeholder="화장품명"
+              />
+              <button className={styles.addBtn} onClick={onAddInfo}>
+                추가
+              </button>
+              <ul className={styles.scroll}>
+                {additionalInfo.map((info, index) => (
+                  <div className={styles.Btn} key={index}>
+                    <p className={styles.inputBrand}>{info.brand}</p>
+                    <p className={styles.intputProduct}>{info.product}</p>
+                    <button
+                      className={styles.deleteBtn}
+                      onClick={() => onDeleteInfo(index)}
+                    >
+                      <img src={Delete}></img>
+                    </button>
+                    <div className={styles.line}></div>
+                  </div>
+                ))}
+              </ul>
             </div>
           </div>
           <div className={styles.buttonContainer}>
-            <div className={styles.line}></div>
             <div className={styles.save}>
               <React.Fragment>
                 <button onClick={openModal}>작성 완료</button>
