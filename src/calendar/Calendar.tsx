@@ -10,14 +10,11 @@ import React, { useState, useEffect, useRef } from "react";
 // import { ko } from "date-fns/esm/locale";
 import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
-import styles from "./calendar.module.css";
+import "./calendar.module.scss";
 import "./calendar.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../node_modules/react-datepicker/dist/react-datepicker.module.css";
 import Header from "../header/Header";
-import lefticon from "./img/left.png";
-import righticon from "./img/right.png";
-import diary from "./img/diary.png";
 
 const Calendar = () => {
   const [reservedDate, setreservedDate] = useState(new Date());
@@ -25,23 +22,19 @@ const Calendar = () => {
   const [startTime, setStartTime] = useState(null);
   // const [isSelected, setIsSelected] = useState(false);
 
-  useEffect(() => {
-    calendarRef.current.setFocus();
-  }, []);
-
   const onSelect = (time) => {
     setStartTime(time);
     // setIsSelected(true);
   };
 
   return (
-    <div className={styles.calendar}>
-      <div className={styles.header}>
+    <div className="calendar">
+      <div className="header">
         <Header></Header>
       </div>
-      <div className={styles.content}>
+      <div className="content">
         {/* <img src={diary} /> */}
-        <span className={styles.select_date}>
+        <span className="select_date">
           <DatePicker
             locale={ko}
             ref={calendarRef}
@@ -63,25 +56,29 @@ const Calendar = () => {
                   margin: 10,
                   display: "flex",
                   justifyContent: "center",
+                  width: "500px",
+                  height: "50px",
                 }}
-                className={styles.calendar}
+                className="calendar"
               >
-                <div className={styles.calendar_header}>
+                <div className="calendar_header">
                   <span
-                    className={styles.btn_month}
+                    className="btn_month"
                     onClick={decreaseMonth}
-                    disabled={prevMonthButtonDisabled}
+                    // disabled={prevMonthButtonDisabled}
                   >
-                    <img src={lefticon}></img>
+                    이전달
+                    {/* <img src="./img/left.png"></img> */}
                   </span>
-                  <span className={styles.month_day}>{getMonth(date)}월</span>
+                  <span className="month_day">{date.getMonth() + 1}월</span>
 
                   <span
-                    className={styles.btn_month}
+                    className="btn_month"
                     onClick={increaseMonth}
-                    disabled={nextMonthButtonDisabled}
+                    // disabled={nextMonthButtonDisabled}
                   >
-                    <img src={righticon}></img>
+                    다음달
+                    {/* <img src="./img/right.png"></img> */}
                   </span>
                 </div>
               </div>
@@ -89,21 +86,21 @@ const Calendar = () => {
           />
         </span>
 
-        <span className={styles.reservation}>
-          <div className={styles.select}>
-            <div className={styles.selected_date}>
+        <span className="reservation">
+          <div className="select">
+            <div className="selected_date">
               {reservedDate && (
                 <p>
                   원하는 날짜
                   <br />
-                  <div id={styles.date}>
+                  <div id="date">
                     {format(reservedDate, "yyyy/MM/dd")}
                     {/* {reservedDate.toLocaleDateString()} */}
                   </div>
                 </p>
               )}
             </div>
-            <div className={styles.selected_time}>
+            <div className="selected_time">
               <p>원하는 시간</p>
               <DatePicker
                 selected={startTime}
@@ -119,7 +116,7 @@ const Calendar = () => {
                 timeCaption=""
                 timeFormat="HH:mm"
                 placeholderText="XX:00"
-                className={styles.timeinput}
+                className="timeinput"
               />
             </div>
           </div>
