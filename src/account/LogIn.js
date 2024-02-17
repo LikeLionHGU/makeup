@@ -4,10 +4,11 @@ import axios from "axios";
 import { useState } from "react";
 import headerimg from "./img/header1.png";
 import Header from "../header/Header";
+import LoginRect from "./img/loginrect.png";
+import LoginInnerRect from "./img/logininnerrect.png";
 
 import styles from "./Login.module.css";
 // import login from "./img/login.png";
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,10 +45,13 @@ const Login = () => {
       <Header></Header>
       <div className={styles.login}>
         <div className={styles.login_rect}>
-          <div className={styles.login_header}>
+          {/* <div className={styles.login_header}>
             <img src={headerimg} />
-          </div>
+          </div> */}
           <div className={styles.input}>
+            <img src={LoginRect}></img>
+            <img src={LoginInnerRect}></img>
+
             {/* <img src={login} /> */}
             <div className={styles.inputemail}>
               <br />
