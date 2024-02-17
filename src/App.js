@@ -2,12 +2,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import "./App.css";
 import Main from "./Main";
 
+import "./calendar/calendar.module.scss";
+
 import BoardWrite from "./write/BoardWrite";
 import BoardList from "./board/BoardList";
 import LogIn from "./account/LogIn";
 import SignUp from "./account/SignUp";
 import Register from "./account/Register";
-import Calendar from "./calendar/Calendar";
+import Calendar from "./calendar/Calendar.tsx";
 import Complete from "./account/Complete";
 
 function App() {
