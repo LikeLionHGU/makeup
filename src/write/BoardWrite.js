@@ -55,8 +55,7 @@ const BoardWrite = () => {
   };
 
   const saveBoard = () => {
-    alert("등록되었습니다.");
-    navigate("/board");
+    navigate("/calendar");
   };
 
   const imageInput = useRef();
