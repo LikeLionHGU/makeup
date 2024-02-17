@@ -4,6 +4,9 @@ import styles from "./BoardWrite.module.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "../header/Header";
 import photoimg from "./Group 9.png";
+import Modal from "../modal/modal";
+import Delete from "./delete.png";
+import Basket from "./basket.png";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
@@ -12,10 +15,11 @@ const BoardWrite = () => {
     title: "",
     createdBy: "",
     contents: "",
-    image: null, // 이미지 파일을 담을 상태 추가
+    image: null,
+    additionalInfo: [],
   });
 
-  const { title, contents, image } = board;
+  const { title, createdBy, contents, image, additionalInfo } = board;
 
   const onChange = (event) => {
     const { value, name } = event.target;
@@ -25,9 +29,34 @@ const BoardWrite = () => {
     });
   };
 
+  const onAddInfo = () => {
+    if (contents && createdBy) {
+      setBoard((prevBoard) => ({
+        ...prevBoard,
+        additionalInfo: [
+          ...prevBoard.additionalInfo,
+          { brand: createdBy, product: contents },
+        ],
+        contents: "",
+        createdBy: "",
+      }));
+    }
+  };
+
+  const onDeleteInfo = (index) => {
+    setBoard((prevBoard) => {
+      const updatedInfo = [...prevBoard.additionalInfo];
+      updatedInfo.splice(index, 1);
+
+      return {
+        ...prevBoard,
+        additionalInfo: updatedInfo,
+      };
+    });
+  };
+
   const saveBoard = () => {
-    alert("등록되었습니다.");
-    navigate("/board");
+    navigate("/calendar");
   };
 
   const imageInput = useRef();
@@ -49,6 +78,26 @@ const BoardWrite = () => {
     }
   };
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const noFeedMessage =
+    additionalInfo.length === 0 && !contents ? (
+      <p>
+        <div className={styles.feed}>
+          <img src={Basket} alt="basketimg"></img>
+        </div>
+        <br />
+        <div className={styles.text}>작성된 피드가 없습니다.</div>
+      </p>
+    ) : null;
+
   return (
     <div>
       <Routes>
@@ -56,69 +105,88 @@ const BoardWrite = () => {
       </Routes>
 
       <div className={styles.rect}>
-        {image ? null : (
-          <span className={styles.button}>
-            <input
-              type="file"
-              style={{ display: "none" }}
-              ref={imageInput}
-              onChange={handleImageChange}
-            />
-            <button onClick={onCickImageUpload}>
-              <img alt="photo01" src={photoimg} />
-            </button>
-          </span>
-        )}
-        {image && (
-          <span className={styles.photo}>
-            <img
-              src={image}
-              alt="Uploaded"
-              style={{
-                maxWidth: "460px",
-                maxHeight: "580px",
-                borderRadius: "40px",
-                marginTop: "25px",
-                marginBottom: "25px",
-                marginLeft: "25px",
-              }}
-            />
-          </span>
-        )}
+        <div className={styles.left}>
+          {image ? (
+            <div className={styles.photo}>
+              <img src={image} alt="Uploaded" />
+            </div>
+          ) : (
+            <div className={styles.button}>
+              <input
+                type="file"
+                style={{ display: "none" }}
+                ref={imageInput}
+                onChange={handleImageChange}
+              />
+              <button onClick={onCickImageUpload}>
+                <img alt="photo01" src={photoimg} />
+              </button>
+            </div>
+          )}
+        </div>
+        <div className={styles.right}>
+          <div className={styles.titlecontent}>
+            <div className={styles.title}>
+              <textarea
+                type="text"
+                name="title"
+                value={title}
+                rows="2"
+                onChange={onChange}
+                placeholder="제목을 입력해주세요. "
+              />
+            </div>
+            <div className={styles.contents}>
+              <input
+                className={styles.brand}
+                name="createdBy"
+                value={createdBy}
+                onChange={onChange}
+                placeholder="브랜드명"
+              />
+              <input
+                className={styles.product}
+                name="contents"
+                value={contents}
+                onChange={onChange}
+                placeholder="화장품명"
+              />
+              <button className={styles.addBtn} onClick={onAddInfo}>
+                추가
+              </button>
+              <ul className={styles.scroll}>
+                {additionalInfo.map((info, index) => (
+                  <div className={styles.Btn} key={index}>
+                    <p className={styles.inputBrand}>{info.brand}</p>
+                    <p className={styles.intputProduct}>{info.product}</p>
+                    <button
+                      className={styles.deleteBtn}
+                      onClick={() => onDeleteInfo(index)}
+                    >
+                      <img src={Delete} alt="delteBtn"></img>
+                    </button>
+                    <div className={styles.line}></div>
+                  </div>
+                ))}
+              </ul>
+              <div className={styles.feed}>{noFeedMessage}</div>
+            </div>
+          </div>
+          <div className={styles.buttonContainer}>
+            <div className={styles.save}>
+              <React.Fragment>
+                <button onClick={openModal}>작성 완료</button>
 
-        <span className={styles.title}>
-          <textarea
-            type="text"
-            name="title"
-            value={title}
-            cols="20"
-            rows="10"
-            onChange={onChange}
-            placeholder="제목 입력하기"
-          />
-        </span>
-        <span className={styles.contents}>
-          <textarea
-            name="contents"
-            cols="50"
-            rows="10"
-            value={contents}
-            onChange={onChange}
-            placeholder="사용한 화장품 리스트를 알려주세요."
-          ></textarea>
-        </span>
-
-        <div className={styles.buttonContainer}>
-          <div className={styles.line}></div>
-          <span className={styles.save}>
-            <button onClick={saveBoard}>작성 완료</button>
-          </span>
-          <span className={styles.date}>
-            <Link to="/calendar">
+                <Modal open={modalOpen} close={closeModal}>
+                  피드 작성이 완료되었습니다!
+                </Modal>
+              </React.Fragment>
+            </div>
+            <div className={styles.date}>
               <button onClick={saveBoard}>날짜 설정</button>
-            </Link>
-          </span>
-          {/* 날짜 설정 페이지로 이동하기 */}
+            </div>
+            {/* 날짜 설정 페이지로 이동하기 */}
+          </div>
         </div>
       </div>
     </div>

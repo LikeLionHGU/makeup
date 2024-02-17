@@ -2,77 +2,94 @@
   font-family: "Pretendard-Regular";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
     format("woff");
-  font-weight: bold;
-  font-style: normal;
 }
 .rect {
   display: flex;
-  justify-content: center;
   border-radius: 40px;
   box-shadow: 0px 0px 10px #a2a2a2;
   width: 100%;
-  height: 630px;
+  /* height: 630px; */
   max-width: 1019px;
-  margin-left: 270px;
-  margin-right: 270px;
+  margin: auto;
   margin-bottom: 100px;
   margin-top: 52px;
-  flex-direction: column;
+  padding: 25px;
   position: relative;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.left {
+  width: 50%;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 19px;
+}
+
+.buttonContainer > div {
+  margin: 6px;
 }
 
 .button {
   display: inline-block;
-  height: 100px;
-  width: 300px;
+  height: 630px;
+  width: 460px;
 }
 .button button {
-  width: 460px;
-  height: 580px;
+  width: 100%;
+  height: 100%;
   border-radius: 40px;
   border-color: #d7d7d7;
   background-color: #d7d7d7;
   border-style: none;
-  margin-left: 25px;
 }
 .photo {
   display: flex;
   align-items: center;
-  height: 100px;
-  width: 300px;
-  position: absolute;
+  height: 100%;
+  width: 460px;
 }
 
 .photo img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  position: absolute;
+  width: 100%;
+  border-radius: 40px;
 }
 .button img {
   width: 45px;
   height: 36px;
 }
-
+.right {
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+}
 .title {
   display: inline-block;
-  height: 100px;
-  width: 300px;
-  padding-top: 0px;
+  width: 100%;
   font-family: "Pretendard-Regular";
+  font-weight: 600;
+  font-size: 28px;
 }
 
 .title textarea {
+  margin-left: 20px;
   display: flex;
   border: none;
-  font-size: 25px;
-  padding-left: 40px;
+  width: 100%;
+  height: 37px;
   flex-direction: column;
-  transform: translateX(500px);
-  margin-top: -50px;
   resize: none;
+  padding-top: 10px;
   font-family: "Pretendard-Regular";
+  font-weight: 600;
+  font-size: 28px;
+  margin-bottom: 21px;
 }
 
 .title textarea:focus {
@@ -80,17 +97,13 @@
 }
 
 .contents {
-  display: inline-block;
-  height: 148px;
-  width: 234px;
   font-family: "Pretendard-Regular";
 }
 
 .contents textarea {
   border: none;
-  transform: translateX(540px);
-  margin-top: -90px;
   resize: none;
+  width: 100%;
   font-family: "Pretendard-Regular";
 }
 
@@ -98,43 +111,126 @@
   outline: none;
 }
 
-.save button {
-  display: block;
-  margin-top: 130px;
-  transform: translateX(880px);
-  background-color: white;
-  border-style: solid;
-  border-radius: 50px;
-  border-color: #fc389a;
-  width: 85px;
-  height: 40px;
-  color: #fc389a;
-  font-family: "Pretendard-Regular";
-}
+.save button,
 .date button {
   display: block;
-  margin-top: 12px;
-  transform: translateX(880px);
-  background-color: white;
+  background-color: #fc389a;
   border-style: solid;
-  border-radius: 50px;
+  border-radius: 10px;
   border-color: #fc389a;
-  width: 85px;
-  height: 40px;
-  color: #fc389a;
+  width: 200px;
+  height: 36px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
   font-family: "Pretendard-Regular";
 }
 
-.line {
-  position: relative;
+.save button:hover,
+.date button:hover {
+  background-color: #fc389a;
+  color: white;
 }
-.line::before {
+
+.line {
   content: "";
-  position: absolute;
-  top: 100px;
-  left: 0;
-  right: 0;
-  width: 500px;
-  margin-left: 500px;
-  border-bottom: 1px dashed #ccc;
+  width: 90%;
+  border-bottom: 3px dashed #ccc;
+}
+.scroll {
+  overflow-y: auto;
+  max-height: 350px;
+  margin-top: 37px;
+}
+.brand,
+.product {
+  border-color: #fc389a;
+  border-style: solid;
+  border-radius: 10px;
+  width: 167px;
+  height: 36px;
+  padding-left: 8px;
+  margin-right: 9px;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+}
+
+.brand:focus,
+.product:focus {
+  outline: #fc389a;
+}
+.brand {
+  margin-left: 20px;
+}
+
+.addBtn {
+  border-color: #fc389a;
+  border-style: solid;
+  border-radius: 10px;
+  width: 62px;
+  height: 36px;
+  background-color: #fc389a;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+}
+
+.deleteBtn {
+  position: relative;
+  left: 380px;
+  bottom: 30px;
+  border-style: none;
+  background-color: white;
+  width: 22px;
+  height: 23px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+}
+
+.Btn {
+  height: 74px;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+}
+
+.inputBrand {
+  font-weight: 600;
+  margin-bottom: 0px;
+  margin-top: 16px;
+}
+
+.intputProduct {
+  font-weight: 400;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+ul::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(252, 56, 154, 0.3); /* 스크롤바 트랙의 배경색 */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fc389a;
+  border-radius: 50px;
+}
+
+.feed {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.text {
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
 }
