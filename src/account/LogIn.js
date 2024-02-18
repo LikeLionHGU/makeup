@@ -2,10 +2,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import headerimg from "./img/header1.png";
 import Header from "../header/Header";
-import LoginRect from "./img/loginrect.png";
 import LoginInnerRect from "./img/logininnerrect.png";
+
+import logo from "./img/logo.png";
+import LoginRect from "./img/loginrect.png";
+import emailicon from "./img/emailicon.png";
+import pwicon from "./img/pwicon.png";
+import kakaologo from "./img/kakaologo.png";
 
 import styles from "./Login.module.css";
 // import login from "./img/login.png";
@@ -42,54 +46,61 @@ const Login = () => {
 
   return (
     <div>
-      <Header></Header>
       <div className={styles.login}>
+        <div className={styles.logo}>
+          <img src={logo}></img>
+        </div>
         <div className={styles.login_rect}>
-          {/* <div className={styles.login_header}>
-            <img src={headerimg} />
-          </div> */}
-          <div className={styles.input}>
-            <img src={LoginRect}></img>
-            <img src={LoginInnerRect}></img>
-
-            {/* <img src={login} /> */}
-            <div className={styles.inputemail}>
-              <br />
-              <input
-                type="text"
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-                className={!message ? "inputLogin" : "err_password"}
-                placeholder="아이디(이메일)"
-              />
-            </div>
-
-            <div className={styles.inputpassword}>
-              <br />
-              <input
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                className={!message ? "inputLogin" : "err_password"}
-                placeholder="비밀번호"
-              />
-              <p className="err">{message}</p>
-            </div>
-
-            <div className={styles.btn}>
-              <button className={styles.buttonlogin} onClick={loginaxios}>
-                로그인
-              </button>
-            </div>
-            <br />
-            <div className={styles.btn}>
+          <img src={LoginRect}></img>
+          <div className={styles.rect}>
+            <div className={styles.signupbtn}>
               <Link to="/signup">
                 <button className={styles.buttonsignup}>회원가입</button>
               </Link>
             </div>
+            <div className={styles.input_rect}>
+              <span className={styles.inputicon}>
+                <img src={emailicon}></img>
+              </span>
+              <span className={styles.inputemail}>
+                <input
+                  type="text"
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
+                  className={!message ? "inputLogin" : "err_password"}
+                  placeholder="아이디(이메일)"
+                />
+              </span>
+            </div>
+
+            <div className={styles.input_rect}>
+              <span className={styles.inputicon}>
+                <img src={pwicon}></img>
+              </span>
+              <span className={styles.inputpassword}>
+                <input
+                  type="password"
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  className={!message ? "inputLogin" : "err_password"}
+                  placeholder="비밀번호"
+                />
+                <p className={styles.err}>{message}</p>
+              </span>
+            </div>
           </div>
+        </div>
+        <div className={styles.btn}>
+          <button className={styles.buttonlogin} onClick={loginaxios}>
+            로그인
+          </button>
+        </div>
+        <div className={styles.btn}>
+          <button className={styles.buttonkakaologin} onClick={loginaxios}>
+            <img src={kakaologo}></img>
+          </button>
         </div>
       </div>
     </div>

@@ -2,12 +2,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import headerimg from "./img/header3.png";
+
 import icon from "./img/completeicon.png";
-import Header from "../header/Header";
+import logo from "./img/logo.png";
+import loginrect from "./img/loginrect.png";
+
 import styles from "./Complete.module.css";
 
-const SignUp = () => {
+const Complete = () => {
   const navigate = useNavigate();
 
   const [usernameinput, setUsernameinput] = useState("");
@@ -34,25 +36,25 @@ const SignUp = () => {
 
   return (
     <div>
-      <Header></Header>
       <div className={styles.signup}>
-        <div className={styles.signup_rect}>
-          <div className={styles.signup_header}>
-            <img src={headerimg} />
-          </div>
+        <div className={styles.signup_header}>
+          <img src={logo}></img>
+        </div>
 
-          <div className={styles.content}>
+        <div className={styles.content}>
+          <img src={loginrect}></img>
+          <div className={styles.rect}>
             <div className={styles.icon}>
               <img src={icon} />
             </div>
-            <h2>회원가입 완료</h2>
-            <h4>회원님의 가입을 환영합니다.</h4>
-          </div>
+            <h3>회원가입 완료</h3>
+            <p>메이크어스의 다양한 서비스와 혜택을 누리세요.</p>
 
-          <div className={styles.btn}>
-            <Link to="/">
-              <button onClick={registeraxios}>회원가입 완료</button>
-            </Link>
+            <div className={styles.btn}>
+              <Link to="/">
+                <button onClick={registeraxios}>메인 페이지로 돌아가기</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -60,4 +62,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Complete;

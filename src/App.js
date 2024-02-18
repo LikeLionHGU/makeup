@@ -8,9 +8,8 @@ import BoardWrite from "./write/BoardWrite";
 import BoardList from "./board/BoardList";
 import LogIn from "./account/LogIn";
 import SignUp from "./account/SignUp";
-import Register from "./account/Register";
-import Calendar from "./calendar/Calendar.tsx";
 import Complete from "./account/Complete";
+import Calendar from "./calendar/Calendar.tsx";
 
 function App() {
   return (
@@ -19,10 +18,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<LogIn />}></Route>
-          <Route path="/complete" element={<Complete />}></Route>
-          <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/complete" element={<Complete />} />
+          <Route path="/calendar" element={<Calendar />} />
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />
         </Routes>
