@@ -11,10 +11,10 @@ import emailicon from "./img/emailicon.png";
 import pwicon from "./img/pwicon.png";
 import kakaologo from "./img/kakaologo.png";
 
-import styles from "./Login.module.css";
+import styles from "./LogIn.module.css";
 // import login from "./img/login.png";
 
-const Login = () => {
+const LogIn = () => {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
@@ -107,4 +107,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LogIn;
