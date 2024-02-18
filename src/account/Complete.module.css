@@ -1,34 +1,59 @@
 .signup {
-  padding-left: 16.3%;
-  padding-right: 24.7vh;
-}
-
-.signup_rect {
-  border-radius: 30px;
-  border: 2px solid black;
+  padding: auto;
   text-align: center;
 }
 
+.complete_header {
+  border-radius: 30px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 94px;
+}
+
+.icon img {
+  padding-top: 37px;
+  padding-bottom: 32px;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 13px;
+}
+
+p {
+  margin-bottom: 32px;
+}
+
+.content {
+  margin: auto;
+}
+
+.content img {
+  margin: auto;
+}
+
 .signup_header {
-  padding-top: 127px;
+  padding-top: 171px;
+  padding-bottom: 10px;
   padding-left: 7%;
   padding-right: 7%;
 }
 
-.content {
-  margin-top: 130px;
-  margin-bottom: 30px;
-  margin-left: 40%;
-  margin-right: 40%;
+.rect {
+  padding: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .btn button {
   width: 200px;
   height: 58px;
-  margin-top: 80px;
-  margin-bottom: 120px;
-  border-radius: 10px;
+  margin-bottom: 36px;
+  border-radius: 50px;
   border: none;
-  color: white;
-  background-color: rgb(235, 85, 153);
+  background-color: white;
+  color: rgb(235, 85, 153);
+  border: 2px solid rgb(235, 85, 153);
 }
