@@ -1,19 +1,37 @@
-/* :root {
-  width: 100% !important;
-  height: 100% !important;
-} */
-
 .login {
   padding-left: 30vh;
   padding-right: 24.7vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.login .logo img {
+  width: 150px;
+}
+
+.rect {
+  width: 640px;
+  height: 308px;
+  margin: auto;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .login_rect {
-  /* width: 67%;
-  height: 74%; */
   border-radius: 30px;
-  border: 2px solid black;
   text-align: center;
+  position: relative;
 }
 
 .login_header {
@@ -23,28 +41,82 @@
   padding-right: 10vh;
 }
 
-.input {
-  padding-left: 45vh;
-  padding-right: 45vh;
-  padding-top: 107px;
-  padding-bottom: 165px;
+.input_rect {
+  width: 502px;
+  height: 52px;
+  margin-left: 74px;
+  margin-right: 74px;
+  border: 1.5px solid #ff8bc5;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  top: 5px;
+  margin-bottom: 15px;
+}
+
+.login_rect img {
+  margin: auto;
+  vertical-align: middle;
+}
+
+.inputicon img {
+  margin-right: 16px;
+}
+
+.inputemail,
+.inputpassword {
+  padding-right: 20px;
 }
 
 .inputemail input,
 .inputpassword input {
-  width: 325px;
-  height: 51px;
-  border: 1px solid black;
+  width: 300px;
+  height: 40px;
   padding-left: 20px;
-  padding-right: 20px;
-  margin-bottom: 15px;
+  padding-right: 80px;
+  margin-bottom: 0;
+  border: none;
+  border-left: 1.5px dashed #ff8bc5;
 }
 
+.inputpassword .err {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.signupbtn button {
+  width: 94px;
+  height: 42px;
+  border-radius: 30px;
+  margin-top: 27px;
+  margin-right: 74px;
+  margin-bottom: 26px;
+  color: #fc389a;
+  background-color: white;
+  border: 2px solid #fc389a;
+  float: right;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .btn button {
-  width: 100%;
-  height: 51px;
-  margin-top: 15px;
-  border-radius: 10px;
+  width: 326px;
+  height: 60px;
+  border-radius: 15px;
+  color: white;
   border: none;
-  background-color: rgb(217, 217, 217);
+}
+.buttonlogin {
+  margin-top: 44px;
+  margin-bottom: 15px;
+  background-color: #fc389a;
+}
+
+.buttonkakaologin {
+  background-color: #ffe812;
 }
