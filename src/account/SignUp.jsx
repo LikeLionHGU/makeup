@@ -1,5 +1,5 @@
 // import "./SignUp.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -17,27 +17,27 @@ const SignUp = () => {
   const [nameinput, setNameinput] = useState("");
   const [phonenumberinput, setPhonenumberinput] = useState("");
   const [genderinput, setGenderinput] = useState("");
-  const [birthdateinput, setBirthdateinput] = useState("");
+  const [birthDateinput, setbirthDateinput] = useState("");
 
   const [message, setMessage] = useState("");
 
   const registeraxios = () => {
     axios
-      .post("/users/signup", {
+      .post("http://localhost:8080/auth/signup", {
         username: usernameinput,
         email: emailinput,
         password: passwordinput,
         name: nameinput,
         phonenumber: phonenumberinput,
-        birthdate: birthdateinput,
+        birthDate: birthDateinput,
         gender: genderinput,
       })
       .then((response) => {
         console.log(response);
         alert("회원가입성공");
-        if ((response.status = 200)) {
-          return navigate("/mylogin");
-        }
+        // if ((response.status = 200)) {
+        //   return navigate("/mylogin");
+        // }
       })
       .catch((err) => {
         setMessage(err.response.data.message);
@@ -104,12 +104,12 @@ const SignUp = () => {
 
             <div className={styles.signup_input}>
               <input
-                type="birthdate"
+                type="birthDate"
                 placeholder="생년월일(8자리)"
                 onChange={(e) => {
-                  setBirthdateinput(e.target.value);
+                  setbirthDateinput(e.target.value);
                 }}
-                className={!message ? "inputLogin" : "err_birthdate"}
+                className={!message ? "inputLogin" : "err_birthDate"}
               />
             </div>
 
@@ -160,7 +160,7 @@ const SignUp = () => {
           </div>
 
           <div className={styles.btn}>
-            <Link to="/complete">
+            <Link to="/">
               <button onClick={registeraxios}>회원정보 등록</button>
             </Link>
           </div>
