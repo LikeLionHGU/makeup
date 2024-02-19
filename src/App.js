@@ -2,15 +2,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import "./App.css";
 import Main from "./Main";
 
-import "./calendar/calendar.module.scss";
+import "./calendar/Calendarr.module.css";
 
 import BoardWrite from "./write/BoardWrite";
 import BoardList from "./board/BoardList";
 import LogIn from "./account/LogIn";
 import SignUp from "./account/SignUp";
 import Register from "./account/Register";
-import Calendar from "./calendar/Calendar.tsx";
+
 import Complete from "./account/Complete";
+import Calendarr from "./calendar/Calendarr";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
-          <Route path="/calendar" element={<Calendar />}></Route>
+          <Route path="/calendar" element={<Calendarr />}></Route>
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />
         </Routes>

@@ -7,7 +7,7 @@ import Header from "../header/Header";
 import LoginRect from "./img/loginrect.png";
 import LoginInnerRect from "./img/logininnerrect.png";
 
-import styles from "./Login.module.css";
+import styles from "./LogIn.module.css";
 // import login from "./img/login.png";
 
 const Login = () => {
