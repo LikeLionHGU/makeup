@@ -12,8 +12,8 @@ import emailicon from "./img/emailicon.png";
 import pwicon from "./img/pwicon.png";
 import kakaologo from "./img/kakaologo.png";
 
+import styles from "./Login.module.css";
 
-import styles from "./LogIn.module.css";
 // import login from "./img/login.png";
 
 const LogIn = () => {
