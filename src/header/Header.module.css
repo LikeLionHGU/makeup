@@ -1,8 +1,10 @@
 .header {
   padding-top: 29px;
-  padding-left: 16.3%;
-  padding-right: 24.7vh;
+  width: 100%;
   display: flex;
+  margin: auto;
+  position: relative;
+  justify-content: center;
 }
 
 .header .logo img {

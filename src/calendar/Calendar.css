@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
+.react-datepicker__header {
+  background-color: white;
+  border-bottom: none;
+}
+
+.react-datepicker__day-name {
+  margin: 18px;
+  font-family: "Pretendard-Regular";
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.react-datepicker {
+  border: none;
+}
+
+.react-datepicker__month {
+  font-size: 16px;
+  font-family: "Pretendard-Regular";
+  font-weight: 400;
+}
+
+.react-datepicker__day {
+  /* padding-left: 18px; */
+  margin: 18px;
+  font-family: "Pretendard-Regular";
+}
+.react-datepicker__day:hover {
+  background-color: white;
+}
+.react-datepicker__day--selected {
+  width: 42px;
+  height: 32px;
+  border-radius: 100%;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fc389a;
+}
+
+.react-datepicker__day--selected:hover {
+  width: 42px;
+  height: 32px;
+  border-radius: 100%;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fc389a;
+}
+
+.Calendarr_select_date__eoyVO {
+  margin: 0px;
+}
