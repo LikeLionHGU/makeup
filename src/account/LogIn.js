@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import Header from "../header/Header";
+// import Header from "../header/Header";
 import LoginInnerRect from "./img/logininnerrect.png";
 
 import logo from "./img/logo.png";
