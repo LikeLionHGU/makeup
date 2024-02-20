@@ -105,7 +105,7 @@ function Calendarr() {
               <div className={styles.selected_date}>
                 {reservedDate && (
                   <p>
-                    원하는 날짜
+                    원하는 요일
                     <br />
                     <div id={styles.date}>
                       {format(reservedDate, "yyyy/MM/dd")}
@@ -116,23 +116,25 @@ function Calendarr() {
               </div>
 
               <div className={styles.selected_time}>
-                <p>원하는 시간</p>
-                <DatePicker
-                  selected={startTime}
-                  dateFormat="HH:mm"
-                  onChange={onSelect}
-                  // locale={ko}
-                  showTimeSelect
-                  showTimeSelectOnly
-                  timeIntervals={60}
-                  // minTime={setHours(setMinutes(new Date(), 0), 10)}
-                  // minTime={setHours(setMinutes(new Date(), 10))}
-                  // maxTime={setHours(setMinutes(new Date(), 0), 23)}
-                  timeCaption=""
-                  timeFormat="HH:mm"
-                  placeholderText="XX:00"
-                  className={styles.timeinput}
-                />
+                <p>
+                  원하는 시간
+                  <DatePicker
+                    selected={startTime}
+                    dateFormat="HH:mm"
+                    onChange={onSelect}
+                    // locale={ko}
+                    showTimeSelect
+                    showTimeSelectOnly
+                    timeIntervals={60}
+                    // minTime={setHours(setMinutes(new Date(), 0), 10)}
+                    // minTime={setHours(setMinutes(new Date(), 10))}
+                    // maxTime={setHours(setMinutes(new Date(), 0), 23)}
+                    timeCaption=""
+                    timeFormat="HH:mm"
+                    placeholderText="XX:00"
+                    className={styles.timeinput}
+                  />
+                </p>
               </div>
             </div>
           </span>
