@@ -22,8 +22,9 @@ const SignUp = () => {
   const [message, setMessage] = useState("");
 
   const registeraxios = () => {
-    axios
-      .post("/users/signup", {
+    fetch("http://localhost:8080/auth/sign-up", {
+      method: "POST",
+      body: JSON.stringify({
         username: usernameinput,
         email: emailinput,
         password: passwordinput,
@@ -31,18 +32,31 @@ const SignUp = () => {
         phonenumber: phonenumberinput,
         birthdate: birthdateinput,
         gender: genderinput,
-      })
-      .then((response) => {
-        console.log(response);
-        alert("회원가입성공");
-        if ((response.status = 200)) {
-          return navigate("/complete");
-        }
-      })
-      .catch((err) => {
-        setMessage(err.response.data.message);
-        console.log(err);
-      });
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log("결과: ", result));
+    // axios
+    //   .post("http://localhost:8080/auth/sign-up", {
+    //     username: usernameinput,
+    //     email: emailinput,
+    //     password: passwordinput,
+    //     name: nameinput,
+    //     phonenumber: phonenumberinput,
+    //     birthdate: birthdateinput,
+    //     gender: genderinput,
+    //   })
+    //   .then(function (response) {
+    //     console.log(response);
+    //     alert("회원가입성공");
+    //     if (response.data.code == 0) {
+    //       return navigate("/complete");
+    //     }
+    //   })
+    //   .catch(function (err) {
+    //     setMessage(err.response.data.message);
+    //     console.log(err);
+    //   });
   };
 
   return (

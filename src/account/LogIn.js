@@ -5,7 +5,6 @@ import { useState } from "react";
 // import Header from "../header/Header";
 import LoginInnerRect from "./img/logininnerrect.png";
 
-
 import logo from "./img/logo.png";
 import LoginRect from "./img/loginrect.png";
 import emailicon from "./img/emailicon.png";
@@ -13,7 +12,6 @@ import pwicon from "./img/pwicon.png";
 import kakaologo from "./img/kakaologo.png";
 
 import styles from "./LogIn.module.css";
-
 
 // import login from "./img/login.png";
 
@@ -29,22 +27,32 @@ const LogIn = () => {
     e.preventDefault();
     // 창이 새로고침되는 것을 막는다.
 
-    axios
-      .post("/login", {
+    fetch("http://localhost:8080/auth/sign-up", {
+      method: "POST",
+      body: {
         username: username,
         password: password,
-      })
-      .then((response) => {
-        localStorage.setItem("Token", response.headers.authorization);
-        console.log(response);
-        if ((response.status = 200)) {
-          return navigate("/posts");
-        }
-      })
-      .catch((err) => {
-        setMessage(err.response.data.message);
-        console.log(err);
-      });
+      },
+    })
+      .then((response) => response.json)
+      .then((result) => console.log("결과: ", result));
+
+    // axios
+    //   .post("/login", {
+    //     username: username,
+    //     password: password,
+    //   })
+    //   .then((response) => {
+    //     localStorage.setItem("Token", response.headers.authorization);
+    //     console.log(response);
+    //     if ((response.status = 200)) {
+    //       return navigate("/posts");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     setMessage(err.response.data.message);
+    //     console.log(err);
+    //   });
   };
 
   return (
