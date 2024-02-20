@@ -13,6 +13,7 @@ import SignUp from "./account/SignUp";
 
 import Complete from "./account/Complete";
 import Calendarr from "./calendar/Calendarr";
+import MentoCalendar from "./calendarMento/MentoCalendar";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
           <Route path="/complete" element={<Complete />}></Route>
           <Route path="/calendar" element={<Calendarr />}></Route>
+          <Route path="/calendarmento" element={<MentoCalendar />}></Route>
 
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />

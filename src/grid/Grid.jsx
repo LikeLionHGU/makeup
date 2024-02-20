@@ -9,7 +9,7 @@ function Grid() {
 
   useEffect(() => {
     // API 호출
-    fetch("http://localhost:8080/images")
+    fetch("http://localhost:8080/posts/images")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
