@@ -36,7 +36,7 @@ const SignUp = () => {
         console.log(response);
         alert("회원가입성공");
         if ((response.status = 200)) {
-          return navigate("/mylogin");
+          return navigate("/complete");
         }
       })
       .catch((err) => {
@@ -129,8 +129,9 @@ const SignUp = () => {
                         : "err_gender"
                     }
                     value="female"
+                    id="female"
                   />
-                  <label for="gender">여성</label>
+                  <label for="female">여성</label>
                   <input
                     type="radio"
                     name="gender"
@@ -140,8 +141,9 @@ const SignUp = () => {
                     }}
                     className={!message ? "inputLogin" : "err_gender"}
                     value="male"
+                    id="male"
                   />
-                  <label for="gender">남성</label>
+                  <label for="male">남성</label>
                 </div>
               </div>
             </div>
@@ -160,9 +162,9 @@ const SignUp = () => {
           </div>
 
           <div className={styles.btn}>
-            <Link to="/complete">
-              <button onClick={registeraxios}>회원정보 등록</button>
-            </Link>
+            {/* <Link to="/complete"> */}
+            <button onClick={registeraxios}>회원정보 등록</button>
+            {/* </Link> */}
           </div>
         </div>
       </div>
