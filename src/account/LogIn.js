@@ -2,7 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import Header from "../header/Header";
+// import Header from "../header/Header";
 import LoginInnerRect from "./img/logininnerrect.png";
 
 
@@ -12,7 +12,8 @@ import emailicon from "./img/emailicon.png";
 import pwicon from "./img/pwicon.png";
 import kakaologo from "./img/kakaologo.png";
 
-import styles from "./Login.module.css";
+import styles from "./LogIn.module.css";
+
 
 // import login from "./img/login.png";
 

@@ -1,11 +1,12 @@
 import styles from "./Banner.module.css";
+import Slider from "./Slider";
 
 export default function Banner() {
   return (
     <div className={styles.banner}>
-      <div className={styles.rect}>
-        <h1>슬라이드 1</h1>
-      </div>
+      {/* <div className={styles.rect}> */}
+      <Slider></Slider>
+      {/* </div> */}
     </div>
   );
 }

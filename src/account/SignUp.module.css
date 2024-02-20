@@ -52,29 +52,29 @@
 }
 
 .gender {
-  padding: 15px 10px;
+  padding-top: 6px;
 }
 .gender input[type="radio"] {
   display: none;
 }
 .gender input[type="radio"] + label {
   width: 240px;
-  height: 40px;
+  height: 30px;
+  border-radius: 10px;
   display: inline-block;
   cursor: pointer;
-  /* line-height: 24px; */
   text-align: center;
   color: #898989;
+  padding-top: 10px;
 }
 
 .gender input[type="radio"]:checked + label {
   background-color: #ff8bc5;
-  color: #fff;
+  color: white;
 }
 
-/* .radio input {
-  width: 20px;
-} */
+.gender label {
+}
 
 .btn button {
   width: 326px;
@@ -91,7 +91,7 @@ label {
   color: #898989;
 }
 
-p {
+.signup_input p {
   margin-top: 0;
   margin-bottom: 0;
 }

@@ -1,5 +1,8 @@
 .header {
   padding-top: 29px;
+  padding-left: 16.3%;
+  padding-right: 24.7vh;
+  padding-bottom: 95px;
   width: 100%;
   display: flex;
   margin: auto;
@@ -8,8 +11,8 @@
 }
 
 .header .logo img {
-  width: 127px;
-  height: 42px;
+  width: 157px;
+  height: 36px;
   margin-right: 50px;
 }
 

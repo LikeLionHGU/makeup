@@ -1,0 +1,10 @@
+.swiper-pagination-bullet {
+  background: transparent !important;
+  border: 2px solid white !important;
+  margin-right: 15px;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+  border: 2px solid white !important;
+}
