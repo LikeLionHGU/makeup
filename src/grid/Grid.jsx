@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Grid.module.css";
-import dummy from "./data.json";
 import heart from "./heart.png";
 
 function Grid() {
   const navigate = useNavigate();
-  // const memberId = localStorage.getItem("memberID");
-  const [data, setData] = useState(dummy.data);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // API 호출
+    fetch("http://localhost:8080/images")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }, []);
 
   const handleContainerClick = (num) => {
     navigate("/post/" + num);
   };
 
-  if (!data) return <>loading...</>;
+  if (data.length === 0) return <>loading...</>;
 
   return (
     <div>
-      {/* <h2 className={styles.text}>최근에 올라온 피드</h2> */}
-
       <div className={styles.container}>
-        {" "}
         {[...Array(4)].map((_, rowIndex) => (
           <div key={rowIndex} className={styles.row}>
             {[...Array(4)].map((_, colIndex) => {
               const itemIndex = rowIndex * 4 + colIndex;
               const item = data[itemIndex];
+              console.log(item);
+              // https://makeuplion.s3.ap-northeast-2.amazonaws.com/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%93%A4/KakaoTalk_20240215_144310163_10.jpg
+              // 1. CORS 문제 해결 하기. 확장프로그램 설치하는 것은 일시적인 겁니다
+              // 2. image 주소만 받아오고 있음
+              //    클릭을 했을 때 어디로 연결되어야하는지 알 수 있는 방법이 없음.
+              //
+              /*
+                item = {
+                  image_url: 지금 주소
+                  어느 형식에 id,
+                  좋아요 숫자도 있어야함.
+                }
+
+                배열로 문자열만 주는 것이 아니고
+                object (자바: 객체)에 예쁘게 포장해서 보내주세요!!!
+              */
+              // item.image_url
               if (!item) return null;
               return (
                 <div className={styles.bottom}>
@@ -33,7 +52,7 @@ function Grid() {
                     key={item.photo_id}
                     className={styles.rect}
                     onClick={() => handleContainerClick(item.photo_id)}
-                    style={{ backgroundImage: `url(${item.photo_url})` }}
+                    style={{ backgroundImage: `url(${item})` }}
                   >
                     <div className={styles.hoverText}>{item.text}</div>
                     <img
@@ -41,7 +60,7 @@ function Grid() {
                       alt="heartimg"
                       className={styles.heart}
                     ></img>
-                  </div>{" "}
+                  </div>
                 </div>
               );
             })}
