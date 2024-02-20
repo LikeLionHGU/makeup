@@ -9,11 +9,10 @@ import BoardList from "./board/BoardList";
 import LogIn from "./account/LogIn";
 import SignUp from "./account/SignUp";
 
-import Register from "./account/Register";
+// import Register from "./account/Register";
 
 import Complete from "./account/Complete";
 import Calendarr from "./calendar/Calendarr";
-
 
 function App() {
   return (

@@ -73,9 +73,9 @@
 
 .selected_date,
 .selected_time {
-  margin-left: 60px;
+  margin-left: 80px;
   margin-right: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 22px;
 }
 .selected_date p,
 .selected_time p {
