@@ -11,52 +11,35 @@ import styles from "./SignUp.module.css";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const [usernameinput, setUsernameinput] = useState("");
+  const [userNicknameinput, setUserNicknameinput] = useState("");
   const [emailinput, setEmailinput] = useState("");
   const [passwordinput, setPasswordinput] = useState("");
-  const [nameinput, setNameinput] = useState("");
-  const [phonenumberinput, setPhonenumberinput] = useState("");
+  const [usernameinput, setUserNameinput] = useState("");
+  const [phoneNumberinput, setPhoneNumberinput] = useState("");
   const [genderinput, setGenderinput] = useState("");
-  const [birthdateinput, setBirthdateinput] = useState("");
+  const [birthYearinput, setBirthYearinput] = useState("");
 
   const [message, setMessage] = useState("");
 
   const registeraxios = () => {
+    // console.log(12345678);
     fetch("http://localhost:8080/auth/sign-up", {
       method: "POST",
+      headers: {
+        "Content-Type": `application/json`,
+      },
       body: JSON.stringify({
-        username: usernameinput,
+        userNickname: userNicknameinput,
         email: emailinput,
         password: passwordinput,
-        name: nameinput,
-        phonenumber: phonenumberinput,
-        birthdate: birthdateinput,
+        username: usernameinput,
+        phoneNumber: phoneNumberinput,
+        birthYear: birthYearinput,
         gender: genderinput,
       }),
     })
       .then((response) => response.json())
       .then((result) => console.log("결과: ", result));
-    // axios
-    //   .post("http://localhost:8080/auth/sign-up", {
-    //     username: usernameinput,
-    //     email: emailinput,
-    //     password: passwordinput,
-    //     name: nameinput,
-    //     phonenumber: phonenumberinput,
-    //     birthdate: birthdateinput,
-    //     gender: genderinput,
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //     alert("회원가입성공");
-    //     if (response.data.code == 0) {
-    //       return navigate("/complete");
-    //     }
-    //   })
-    //   .catch(function (err) {
-    //     setMessage(err.response.data.message);
-    //     console.log(err);
-    //   });
   };
 
   return (
@@ -94,22 +77,10 @@ const SignUp = () => {
 
             <div className={styles.signup_input}>
               <input
-                type="name"
+                type="username"
                 placeholder="이름"
                 onChange={(e) => {
-                  setPasswordinput(e.target.value);
-                }}
-                className={!message ? "inputLogin" : "err_name"}
-              />
-              <p>{message}</p>
-            </div>
-
-            <div className={styles.signup_input}>
-              <input
-                type="username"
-                placeholder="닉네임"
-                onChange={(e) => {
-                  setPasswordinput(e.target.value);
+                  setUserNameinput(e.target.value);
                 }}
                 className={!message ? "inputLogin" : "username"}
               />
@@ -118,10 +89,22 @@ const SignUp = () => {
 
             <div className={styles.signup_input}>
               <input
-                type="birthdate"
+                type="userNickname"
+                placeholder="닉네임"
+                onChange={(e) => {
+                  setUserNicknameinput(e.target.value);
+                }}
+                className={!message ? "inputLogin" : "userNickname"}
+              />
+              <p>{message}</p>
+            </div>
+
+            <div className={styles.signup_input}>
+              <input
+                type="birthYear"
                 placeholder="생년월일(8자리)"
                 onChange={(e) => {
-                  setBirthdateinput(e.target.value);
+                  setBirthYearinput(e.target.value);
                 }}
                 className={!message ? "inputLogin" : "err_birthdate"}
               />
@@ -142,7 +125,7 @@ const SignUp = () => {
                         ? "inputLogin"
                         : "err_gender"
                     }
-                    value="female"
+                    value={false}
                     id="female"
                   />
                   <label for="female">여성</label>
@@ -154,7 +137,8 @@ const SignUp = () => {
                       setGenderinput(e.target.value);
                     }}
                     className={!message ? "inputLogin" : "err_gender"}
-                    value="male"
+                    // value="male"
+                    value={true}
                     id="male"
                   />
                   <label for="male">남성</label>
@@ -164,21 +148,21 @@ const SignUp = () => {
 
             <div className={styles.signup_input}>
               <input
-                type="phonenumber"
+                type="phoneNumber"
                 placeholder="휴대폰 번호"
                 onChange={(e) => {
-                  setPasswordinput(e.target.value);
+                  setPhoneNumberinput(e.target.value);
                 }}
-                className={!message ? "inputLogin" : "err_phonenumber"}
+                className={!message ? "inputLogin" : "err_phoneNumber"}
               />
               <p>{message}</p>
             </div>
           </div>
 
           <div className={styles.btn}>
-            {/* <Link to="/complete"> */}
-            <button onClick={registeraxios}>회원정보 등록</button>
-            {/* </Link> */}
+            <Link to="/complete">
+              <button onClick={registeraxios}>회원정보 등록</button>
+            </Link>
           </div>
         </div>
       </div>

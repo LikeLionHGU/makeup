@@ -19,11 +19,18 @@
   border: none;
 }
 
+.react-datepicker__month-container {
+  padding-top: 25px;
+}
+
 .react-datepicker__month {
   /* width: 400px; */
   font-size: 16px;
   font-family: "Pretendard-Regular";
   font-weight: 400;
+  padding-left: 30px;
+  padding-right: 0;
+  padding-top: 10px;
 }
 
 .react-datepicker__day {
@@ -122,4 +129,34 @@
 
 .react-datepicker__tab-loop {
   border: none;
+}
+
+.react-datepicker__day:hover {
+  width: 42px;
+  height: 32px;
+  border-radius: 100%;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fc389a;
+}
+
+.react-datepicker__day--highlighted {
+  width: 42px;
+  height: 32px;
+  border-radius: 100%;
+  margin: 10px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #fc389a;
+}
+
+.react-datepicker {
+  background-color: transparent;
+}
+
+.MentoCalendar_select_date__N1Eq2 {
+  margin-top: 80px;
 }

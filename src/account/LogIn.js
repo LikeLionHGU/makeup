@@ -18,8 +18,8 @@ import styles from "./LogIn.module.css";
 const LogIn = () => {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmailinput] = useState("");
+  const [password, setPasswordinput] = useState("");
 
   const [message, setMessage] = useState("");
 
@@ -27,32 +27,29 @@ const LogIn = () => {
     e.preventDefault();
     // 창이 새로고침되는 것을 막는다.
 
-    fetch("http://localhost:8080/auth/sign-up", {
+    fetch("http://localhost:8080/auth/sign-in", {
       method: "POST",
+      headers: {
+        "Content-Type": `application/json`,
+      },
       body: {
-        username: username,
+        email: email,
         password: password,
       },
     })
       .then((response) => response.json)
-      .then((result) => console.log("결과: ", result));
+      .then((result) => console.log("결과: ", result))
+      .catch((err) => {
+        setMessage(err.response.data.message);
+        console.log(err);
+      });
+    if (!email) {
+      return alert("DKFJS");
+    }
+  };
 
-    // axios
-    //   .post("/login", {
-    //     username: username,
-    //     password: password,
-    //   })
-    //   .then((response) => {
-    //     localStorage.setItem("Token", response.headers.authorization);
-    //     console.log(response);
-    //     if ((response.status = 200)) {
-    //       return navigate("/posts");
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setMessage(err.response.data.message);
-    //     console.log(err);
-    //   });
+  const LoginFunc = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -77,7 +74,7 @@ const LogIn = () => {
                 <input
                   type="text"
                   onChange={(e) => {
-                    setUsername(e.target.value);
+                    setEmailinput(e.target.value);
                   }}
                   className={!message ? "inputLogin" : "err_password"}
                   placeholder="아이디(이메일)"
@@ -93,7 +90,7 @@ const LogIn = () => {
                 <input
                   type="password"
                   onChange={(e) => {
-                    setPassword(e.target.value);
+                    setPasswordinput(e.target.value);
                   }}
                   className={!message ? "inputLogin" : "err_password"}
                   placeholder="비밀번호"
@@ -108,11 +105,11 @@ const LogIn = () => {
             로그인
           </button>
         </div>
-        <div className={styles.btn}>
+        {/* <div className={styles.btn}>
           <button className={styles.buttonkakaologin} onClick={loginaxios}>
             <img src={kakaologo}></img>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
