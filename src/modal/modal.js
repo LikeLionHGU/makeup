@@ -3,27 +3,40 @@ import subimg from "./Subtract.png";
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import BoardList from "../board/BoardList";
 
 const Modal = (props) => {
   const navigate = useNavigate();
   const { open } = props;
 
-  const saveBoard = async () => {
-    const title = "새 게시물 제목";
-    const content = "게시물 내용";
-    const userId = 1;
-    const image = "이미지 파일 데이터 (멀티파트 형식)";
+  const [formData, setFormData] = useState(new FormData());
+  const [postTags, setPostTags] = useState({});
+  const [postText, setPostText] = useState("");
+
+  const onChange = ({ target }) => {
+    const files = target.files;
+
+    Object.entries(files).forEach(([i, file]) => {
+      formData.append("images", file);
+    });
+  };
+
+  const registerPost = async () => {
+    formData.set("topic", postTags.topic);
+    formData.set("pet", postTags.pet);
+    formData.set("text", postText);
+    console.log(formData);
 
     try {
-      const response = await axios.post("http://localhost:8080/posts/", {
-        title,
-        content,
-        userId,
-        image,
+      const response = await fetch("http://localhost:8080/posts/", {
+        method: "POST",
+        body: formData,
       });
-      navigate("/board");
+
+      if (response.ok) {
+        navigate("/board");
+      } else {
+        throw new Error("게시물 저장에 실패했습니다.");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +53,7 @@ const Modal = (props) => {
           </header>
           <main>{props.children}</main>
           <footer>
-            <button className={styles.close} onClick={saveBoard}>
+            <button className={styles.close} onClick={registerPost}>
               확인
             </button>
           </footer>

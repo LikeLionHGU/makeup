@@ -16,11 +16,11 @@ import "./Slider.module.css";
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 export default function Slider() {
-  const swiperStyle = {
-    // position: "relative",
-    width: "100%",
-    height: "550px",
-  };
+  // const swiperStyle = {
+  //   // position: "relative",
+  //   width: "100%",
+  //   height: "550px",
+  // };
 
   return (
     <Swiper

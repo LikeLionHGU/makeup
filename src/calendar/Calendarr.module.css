@@ -30,8 +30,8 @@
 }
 
 .select_date {
-  /* width: 600px; */
-  width: 400px;
+  width: 600px;
+  /* width: 400px; */
   height: 600px;
   border-radius: 30px;
   margin-right: 130px;
@@ -74,7 +74,7 @@
 
 .selected_date,
 .selected_time {
-  margin-left: 130px;
+  margin-left: 90px;
   margin-right: 60px;
   margin-bottom: 22px;
 }
