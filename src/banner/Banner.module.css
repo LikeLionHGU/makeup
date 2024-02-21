@@ -5,3 +5,11 @@
   margin-top: 90px;
   margin-bottom: 352px;
 }
+
+.banner {
+  width: 100%;
+  display: flex;
+  margin: auto;
+  position: relative;
+  justify-content: center;
+}

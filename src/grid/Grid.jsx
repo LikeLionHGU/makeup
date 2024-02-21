@@ -11,7 +11,7 @@ function Grid() {
     // API 호출
     fetch("http://localhost:8080/posts/images")
       .then((response) => response.json())
-      .then((data) => setData(data));
+      .then((data) => setData(data.data));
   }, []);
 
   const handleContainerClick = (num) => {
@@ -23,12 +23,12 @@ function Grid() {
   return (
     <div>
       <div className={styles.container}>
-        {[...Array(4)].map((_, rowIndex) => (
-          <div key={rowIndex} className={styles.row}>
-            {[...Array(4)].map((_, colIndex) => {
+        {[...Array(4)].map((_, colIndex) => (
+          <div key={colIndex}>
+            {[...Array(4)].map((_, rowIndex) => {
               const itemIndex = rowIndex * 4 + colIndex;
               const item = data[itemIndex];
-              console.log(item);
+              console.log(data);
               // https://makeuplion.s3.ap-northeast-2.amazonaws.com/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%93%A4/KakaoTalk_20240215_144310163_10.jpg
               // 1. CORS 문제 해결 하기. 확장프로그램 설치하는 것은 일시적인 겁니다
               // 2. image 주소만 받아오고 있음
@@ -52,7 +52,7 @@ function Grid() {
                     key={item.photo_id}
                     className={styles.rect}
                     onClick={() => handleContainerClick(item.photo_id)}
-                    style={{ backgroundImage: `url(${item})` }}
+                    style={{ backgroundImage: `url(${item.imageUrl})` }}
                   >
                     <div className={styles.hoverText}>{item.text}</div>
                     <img
