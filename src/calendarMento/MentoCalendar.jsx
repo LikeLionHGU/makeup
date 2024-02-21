@@ -12,7 +12,7 @@ import DatePicker from "react-datepicker";
 import "../../node_modules/react-datepicker/dist/react-datepicker.css";
 import "../../node_modules/react-datepicker/dist/react-datepicker.module.css";
 
-import styles from "../calendarMento/MentoCalendar.module.css";
+import styles from "./MentoCalendar.module.css";
 import Header from "../header/Header";
 import "../calendar/Calendar.css";
 
