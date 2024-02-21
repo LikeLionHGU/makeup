@@ -1,6 +1,5 @@
 .signup {
-  padding-left: 16.3%;
-  padding-right: 24.7vh;
+  margin: auto;
 }
 
 .signup .logo {
@@ -18,24 +17,18 @@
   position: relative;
 }
 
-.signup_header {
-  padding-top: 127px;
-  padding-left: 7%;
-  padding-right: 7%;
-}
 .rect {
   width: 0;
   height: 0;
   border: 20px solid transparent;
 }
 
-.input {
-  padding-left: 32%;
-  padding-right: 32%;
-  padding-top: 107px;
-  padding-bottom: 165px;
+.signup .input {
+  margin: auto;
+  /* padding-top: 107px; */
+  /* padding-bottom: 165px; */
   position: absolute;
-  top: 50%;
+  top: 420px;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -46,8 +39,7 @@
   height: 52px;
   border: 1px solid #ff8bc5;
   border-radius: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: auto;
   margin-bottom: 39px;
 }
 

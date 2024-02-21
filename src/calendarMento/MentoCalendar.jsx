@@ -12,7 +12,7 @@ import DatePicker from "react-datepicker";
 import "../../node_modules/react-datepicker/dist/react-datepicker.css";
 import "../../node_modules/react-datepicker/dist/react-datepicker.module.css";
 
-import styles from "../calendar/Calendarr.module.css";
+import styles from "../calendarMento/MentoCalendar.module.css";
 import Header from "../header/Header";
 import "../calendar/Calendar.css";
 
@@ -20,12 +20,15 @@ import lefticon from "../calendar/img/left.png";
 import righticon from "../calendar/img/right.png";
 import spring from "../calendar/img/spring.png";
 import spring2 from "../calendar/img/spring2.png";
+import calendar from "./calendar.png";
 
 function MentoCalendar() {
   const [reservedDate, setreservedDate] = useState(new Date());
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
   // const [isSelected, setIsSelected] = useState(false);
+
+  const [selectedDate, setselectedDate] = useState([]);
 
   useEffect(() => {
     calendarRef.current.setFocus();
@@ -54,10 +57,22 @@ function MentoCalendar() {
               ref={calendarRef}
               // dateFormat="yyyy/MM/dd"
               selected={reservedDate}
-              onChange={(date) => setreservedDate(date)}
               minDate={subDays(new Date(), 0)}
               inline
+              highlightDates={selectedDate}
               // className={styles.dateinput}
+              onChange={(date) => {
+                setreservedDate(date);
+                setselectedDate((prev) => {
+                  if (prev.find((d) => d.getTime() === date.getTime())) {
+                    return [
+                      ...prev.filter((d) => d.getTime() !== date.getTime()),
+                    ];
+                  } else {
+                    return [...prev, date];
+                  }
+                });
+              }}
               renderCustomHeader={({
                 date,
                 prevMonthButtonDisabled,
@@ -101,40 +116,19 @@ function MentoCalendar() {
           </span>
 
           <span className={styles.reservation}>
-            <div className={styles.select}>
-              <div className={styles.selected_date}>
-                {reservedDate && (
-                  <p>
-                    원하는 요일
-                    <br />
-                    <div id={styles.date}>
-                      {format(reservedDate, "yyyy/MM/dd")}
-                      {/* {reservedDate.toLocaleDateString()} */}
-                    </div>
-                  </p>
-                )}
+            <div className={styles.content1}>
+              <div className={styles.image}>
+                <img src={calendar}></img>
               </div>
-
-              <div className={styles.selected_time}>
+              <div className={styles.text}>
+                <h3>가능한 날짜를 선택해주세요.</h3>
                 <p>
-                  원하는 시간
-                  <DatePicker
-                    selected={startTime}
-                    dateFormat="HH:mm"
-                    onChange={onSelect}
-                    // locale={ko}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={60}
-                    // minTime={setHours(setMinutes(new Date(), 0), 10)}
-                    // minTime={setHours(setMinutes(new Date(), 10))}
-                    // maxTime={setHours(setMinutes(new Date(), 0), 23)}
-                    timeCaption=""
-                    timeFormat="HH:mm"
-                    placeholderText="XX:00"
-                    className={styles.timeinput}
-                  />
+                  날짜 설정을 한 후에도 피드 페이지에서
+                  <br /> 언제든지 수정 가능합니다.
                 </p>
+              </div>
+              <div className={styles.btn}>
+                <button>설정 완료</button>
               </div>
             </div>
           </span>
