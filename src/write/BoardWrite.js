@@ -87,10 +87,10 @@ const BoardWrite = () => {
       })
     );
 
-    fetch("http://localhost:3000/posts/", {
+    fetch("https://api.zionhann.shop/app/makeup/posts/", {
       method: "POST",
       body: formData,
-      headers: {},
+      headers: { "Content-type": "application/json" },
     });
     //   .then((response) => response.json())
     //   .then((json) => {
@@ -103,7 +103,7 @@ const BoardWrite = () => {
   const [recapData, setRecapData] = useState({});
   useEffect(() => {
     //처음 한번만 실행하기 위해
-    fetch(`http://localhost:3000/posts/${postId}`, {
+    fetch(`https://api.zionhann.shop/app/makeup/posts/${postId}`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ qid: id }),
