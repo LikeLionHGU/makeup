@@ -28,7 +28,7 @@ const LogIn = () => {
     e.preventDefault();
     // 창이 새로고침되는 것을 막는다.
 
-    fetch("http://localhost:8080/auth/sign-in", {
+    fetch("https://api.zionhann.shop/app/makeup/auth/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,

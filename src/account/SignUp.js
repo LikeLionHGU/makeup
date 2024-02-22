@@ -73,7 +73,7 @@ const SignUp = () => {
 
   const registeraxios = () => {
     // console.log(12345678);
-    fetch("http://localhost:8080/auth/sign-up", {
+    fetch("https://api.zionhann.shop/app/makeup/auth/sign-up", {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,

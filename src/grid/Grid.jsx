@@ -9,7 +9,7 @@ function Grid() {
 
   useEffect(() => {
     // API 호출
-    fetch("http://localhost:8080/posts/images")
+    fetch("https://api.zionhann.shop/app/makeup/posts/images")
       .then((response) => response.json())
       .then((data) => setData(data.data));
   }, []);
@@ -18,10 +18,15 @@ function Grid() {
     navigate("/post/" + num);
   };
 
+  const truncate = (str, n) => {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  };
+
   if (data.length === 0) return <>loading...</>;
 
   return (
     <div>
+      <div className={styles.title}>최근에 올라온 피드</div>
       <div className={styles.container}>
         {[...Array(4)].map((_, colIndex) => (
           <div key={colIndex}>
@@ -54,7 +59,10 @@ function Grid() {
                     onClick={() => handleContainerClick(item.photo_id)}
                     style={{ backgroundImage: `url(${item.imageUrl})` }}
                   >
-                    <div className={styles.hoverText}>{item.text}</div>
+                    <div className={styles.hoverText}>
+                      {truncate(item.text, 12)}
+                    </div>
+
                     <img
                       src={heart}
                       alt="heartimg"
