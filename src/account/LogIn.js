@@ -45,6 +45,7 @@ const LogIn = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result.isSuccessful) {
+          console.log("Saving to local storage", result.memberId);
           localStorage.setItem("member_id", JSON.stringify(result.memberId));
           navigate("/");
         } else {
