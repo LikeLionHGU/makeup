@@ -51,8 +51,10 @@ const Complete = () => {
             <p>메이크어스의 다양한 서비스와 혜택을 누리세요.</p>
 
             <div className={styles.btn}>
-              <Link to="/">
-                <button onClick={registeraxios}>메인 페이지로 돌아가기</button>
+              <Link to="/login">
+                <button onClick={registeraxios}>
+                  로그인 페이지로 돌아가기
+                </button>
               </Link>
             </div>
           </div>
