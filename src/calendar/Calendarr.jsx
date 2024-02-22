@@ -39,7 +39,7 @@ function Calendarr() {
   };
   useEffect(() => {
     // API 호출
-    fetch("http://localhost:8080/reservation/view/mento/18")
+    fetch("https://api.zionhann.shop/app/makeup/reservation/view/mento/18")
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);

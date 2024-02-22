@@ -30,7 +30,7 @@ const LogIn = () => {
     e.preventDefault();
     // 창이 새로고침되는 것을 막는다.
 
-    fetch("http://localhost:8080/auth/sign-in", {
+    fetch("https://api.zionhann.shop/app/makeup/auth/sign-in", {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,
@@ -45,6 +45,7 @@ const LogIn = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result.isSuccessful) {
+          console.log("Saving to local storage", result.memberId);
           localStorage.setItem("member_id", JSON.stringify(result.memberId));
           navigate("/");
         } else {
