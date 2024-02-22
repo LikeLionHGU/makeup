@@ -77,6 +77,9 @@
   background-color: #fc389a;
   color: white;
 }
+.btn button:disabled {
+  background-color: #e8e8e8;
+}
 
 input,
 label {
@@ -86,4 +89,9 @@ label {
 .signup_input p {
   margin-top: 0;
   margin-bottom: 0;
+  color: red;
+}
+
+.signup_input input:focus {
+  border: 1px solid red;
 }

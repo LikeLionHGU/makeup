@@ -20,6 +20,7 @@ const LogIn = () => {
 
   const [email, setEmailinput] = useState("");
   const [password, setPasswordinput] = useState("");
+  const [isSuccessful, setisSuccessfulinput] = useState("");
 
   const [message, setMessage] = useState("");
 
@@ -32,18 +33,20 @@ const LogIn = () => {
       headers: {
         "Content-Type": `application/json`,
       },
-      body: {
+      body: JSON.stringify({
         email: email,
         password: password,
-      },
+        isSuccessful: isSuccessful,
+      }),
     })
       .then((response) => response.json)
       .then((result) => console.log("결과: ", result))
-      .catch((err) => {
-        setMessage(err.response.data.message);
-        console.log(err);
+      .catch((error) => {
+        setMessage(error.response.data.message);
+        console.log(error);
       });
-    if (!email) {
+
+    if (isSuccessful === false) {
       return alert("DKFJS");
     }
   };
@@ -56,7 +59,9 @@ const LogIn = () => {
     <div>
       <div className={styles.login}>
         <div className={styles.logo}>
-          <img src={logo}></img>
+          <Link to="/">
+            <img src={logo}></img>
+          </Link>
         </div>
         <div className={styles.login_rect}>
           <img src={LoginRect}></img>
@@ -73,10 +78,13 @@ const LogIn = () => {
               <span className={styles.inputemail}>
                 <input
                   type="text"
+                  id="email"
+                  value={email}
                   onChange={(e) => {
                     setEmailinput(e.target.value);
+                    console.log(isSuccessful);
                   }}
-                  className={!message ? "inputLogin" : "err_password"}
+                  className={!message ? "inputLogin" : "err_email"}
                   placeholder="아이디(이메일)"
                 />
               </span>
@@ -89,6 +97,8 @@ const LogIn = () => {
               <span className={styles.inputpassword}>
                 <input
                   type="password"
+                  id="password"
+                  value={password}
                   onChange={(e) => {
                     setPasswordinput(e.target.value);
                   }}
@@ -101,9 +111,11 @@ const LogIn = () => {
           </div>
         </div>
         <div className={styles.btn}>
-          <button className={styles.buttonlogin} onClick={loginaxios}>
-            로그인
-          </button>
+          <Link to="/">
+            <button className={styles.buttonlogin} onClick={loginaxios}>
+              로그인
+            </button>
+          </Link>
         </div>
         {/* <div className={styles.btn}>
           <button className={styles.buttonkakaologin} onClick={loginaxios}>
