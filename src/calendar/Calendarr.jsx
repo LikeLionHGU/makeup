@@ -23,12 +23,12 @@ import spring from "./img/spring.png";
 import spring2 from "./img/spring2.png";
 
 function Calendarr() {
+  const member_id = localStorage.getItem("member_id");
   const [reservedDate, setreservedDate] = useState(new Date());
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
   const [data, setData] = useState([]);
   // const [isSelected, setIsSelected] = useState(false);
-
   useEffect(() => {
     calendarRef.current.setFocus();
   }, []);
@@ -39,7 +39,9 @@ function Calendarr() {
   };
   useEffect(() => {
     // API 호출
-    fetch("https://api.zionhann.shop/app/makeup/reservation/view/mento/")
+    fetch(
+      "https://api.zionhann.shop/app/makeup/reservation/view/mento/" + member_id
+    )
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
