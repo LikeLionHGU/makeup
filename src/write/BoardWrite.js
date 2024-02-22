@@ -63,7 +63,7 @@ const BoardWrite = () => {
   };
 
   const saveBoard = () => {
-    navigate("/calendar");
+    navigate("/calendarmento");
   };
 
   const imageInput = useRef();

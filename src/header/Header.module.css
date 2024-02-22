@@ -10,9 +10,15 @@
   justify-content: center;
 }
 
+.header .logo h1 {
+  width: 157px;
+  height: 46px;
+  margin-right: 56px;
+}
+
 .header .logo img {
   width: 157px;
-  height: 36px;
+  height: 33px;
   margin-right: 50px;
 }
 
@@ -34,29 +40,55 @@
   margin-right: 110px;
 }
 
+#menuicon {
+  height: 30px;
+  border: 1px solid black;
+}
+
 .icon {
   display: flex;
 }
+
 .icon button {
   border: none;
   background-color: white;
 }
+
 .icon > #chat > button {
   margin-right: 10px;
 }
+
 .icon > #notice > button {
-  margin-right: 26px;
+  margin-right: 16px;
 }
+
 .icon > #chat > img {
   width: 28px;
   height: 28px;
   margin-right: 20px;
 }
+
 .icon > #notice > img {
+  width: 16px;
+  height: 20px;
+  margin-right: 16px;
+}
+
+.icon > #logout > img {
   width: 16px;
   height: 20px;
   margin-right: 36px;
 }
+
+#logout {
+  margin-left: 75px;
+}
+
+#profile {
+  width: 32px;
+  height: 32px;
+}
+
 #profile img {
   width: 30px;
   height: 30px;
