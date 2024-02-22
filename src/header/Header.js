@@ -46,7 +46,10 @@ export default function Header() {
             </Link>
           </span>
           <span id={styles.logout}>
-            <img src={logout} />
+            <img
+              src={logout}
+              onClick={() => localStorage.removeItem("member_id")}
+            />
           </span>
         </span>
       </span>

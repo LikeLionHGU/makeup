@@ -33,7 +33,7 @@ function Grid() {
             {[...Array(4)].map((_, rowIndex) => {
               const itemIndex = rowIndex * 4 + colIndex;
               const item = data[itemIndex];
-              console.log(data);
+              // console.log(data);
               // https://makeuplion.s3.ap-northeast-2.amazonaws.com/%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%93%A4/KakaoTalk_20240215_144310163_10.jpg
               // 1. CORS 문제 해결 하기. 확장프로그램 설치하는 것은 일시적인 겁니다
               // 2. image 주소만 받아오고 있음
