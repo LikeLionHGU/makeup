@@ -23,10 +23,12 @@ import spring2 from "../calendar/img/spring2.png";
 import calendar from "./calendar.png";
 
 function MentoCalendar() {
-  const [reservedDate, setreservedDate] = useState(new Date());
+  const [mentoDate, setmentoDate] = useState(new Date());
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
   // const [isSelected, setIsSelected] = useState(false);
+
+  const [memberId, setmemberId] = useState("");
 
   const [selectedDate, setselectedDate] = useState([]);
 
@@ -37,6 +39,21 @@ function MentoCalendar() {
   const onSelect = (time) => {
     setStartTime(time);
     // setIsSelected(true);
+  };
+
+  const datepick = () => {
+    fetch("https://api.zionhann.shop/app/makeup/reservation/mento", {
+      method: "POST",
+      headers: {
+        "Content-Type": `application/json`,
+      },
+      body: JSON.stringify({
+        memberId: localStorage.getItem("member_id"),
+        mentoDate: mentoDate,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => console.log("결과: ", result));
   };
 
   return (
@@ -56,19 +73,21 @@ function MentoCalendar() {
               locale={ko}
               ref={calendarRef}
               // dateFormat="yyyy/MM/dd"
-              selected={reservedDate}
+              selected={mentoDate}
               minDate={subDays(new Date(), 0)}
               inline
               highlightDates={selectedDate}
               // className={styles.dateinput}
               onChange={(date) => {
-                setreservedDate(date);
+                datepick();
+
                 setselectedDate((prev) => {
                   if (prev.find((d) => d.getTime() === date.getTime())) {
                     return [
                       ...prev.filter((d) => d.getTime() !== date.getTime()),
                     ];
                   } else {
+                    setmentoDate(date);
                     return [...prev, date];
                   }
                 });
@@ -128,7 +147,7 @@ function MentoCalendar() {
                 </p>
               </div>
               <div className={styles.btn}>
-                <button>설정 완료</button>
+                <button onClick={datepick}>설정 완료</button>
               </div>
             </div>
           </span>
