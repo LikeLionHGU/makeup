@@ -119,3 +119,7 @@
 .buttonkakaologin {
   background-color: #ffe812;
 }
+.warning {
+  color: red;
+  font-size: small;
+}
