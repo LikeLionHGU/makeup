@@ -1,51 +1,16 @@
+import React, { useState } from "react";
 import styles from "./Modal.module.css";
 import subimg from "./Subtract.png";
 
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 const Modal = (props) => {
-  const navigate = useNavigate();
-  const { open } = props;
+  const { open, setOpen } = props;
 
-  const [formData, setFormData] = useState(new FormData());
-  const [postTags, setPostTags] = useState({});
-  const [postText, setPostText] = useState("");
-
-  const onChange = ({ target }) => {
-    const files = target.files;
-
-    Object.entries(files).forEach(([i, file]) => {
-      formData.append("images", file);
-    });
-  };
-
-  const registerPost = async () => {
-    formData.set("topic", postTags.topic);
-    formData.set("pet", postTags.pet);
-    formData.set("text", postText);
-    console.log(formData);
-
-    try {
-      const response = await fetch("http://localhost:8080/posts/", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        navigate("/board");
-      } else {
-        throw new Error("게시물 저장에 실패했습니다.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
+  const closeModal = () => {
+    setOpen(false);
   };
 
   return (
-    <div
-      className={open ? `${styles.openModal} ${styles.modal}` : styles.modal}
-    >
+    <div className={`${styles.modal} ${open ? styles.openModal : ""}`}>
       {open ? (
         <section>
           <header>
@@ -53,7 +18,7 @@ const Modal = (props) => {
           </header>
           <main>{props.children}</main>
           <footer>
-            <button className={styles.close} onClick={registerPost}>
+            <button className={styles.close} onClick={closeModal}>
               확인
             </button>
           </footer>
@@ -63,4 +28,17 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+const ParentComponent = ({ open, setOpen }) => {
+  // const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      {/* <button onClick={() => setOpen(true)}>작성 완료</button> */}
+      <Modal open={open} setOpen={setOpen}>
+        피드 작성이 완료되었습니다!{" "}
+      </Modal>
+    </div>
+  );
+};
+
+export default ParentComponent;

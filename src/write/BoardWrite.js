@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./BoardWrite.module.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Header from "../header/Header";
 import photoimg from "./Group 9.png";
 import Modal from "../modal/modal";
@@ -13,32 +13,39 @@ const BoardWrite = () => {
 
   const [board, setBoard] = useState({
     title: "",
-    createdBy: "",
-    contents: "",
+    brandName: "",
+    cosName: "",
     image: null,
     additionalInfo: [],
   });
+  const [file, setFile] = useState(null);
+  const postId = localStorage.getItem("postId");
+  const params = useParams();
+  const id = params.happy;
 
-  const { title, createdBy, contents, image, additionalInfo } = board;
+  const { title, brandName, cosName, image, additionalInfo, list } = board;
 
   const onChange = (event) => {
-    const { value, name } = event.target;
     setBoard({
       ...board,
-      [name]: value,
+      [event.target.name]: event.target.value,
     });
   };
-
+  const saveFile = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+  };
   const onAddInfo = () => {
-    if (contents && createdBy) {
+    if (cosName && brandName) {
       setBoard((prevBoard) => ({
         ...prevBoard,
         additionalInfo: [
           ...prevBoard.additionalInfo,
-          { brand: createdBy, product: contents },
+          { brand: brandName, product: cosName },
         ],
-        contents: "",
-        createdBy: "",
+        cosName: "",
+        brandName: "",
       }));
     }
   };
@@ -64,6 +71,47 @@ const BoardWrite = () => {
     imageInput.current.click();
   };
 
+  const submitPost = (e) => {
+    e.preventDefault();
+    console.log("aaa");
+    openModal();
+    const formData = new FormData();
+    // console.log("Submit Post Called!");
+    // console.log({ file, title, list });
+    formData.append("file", board.image);
+    formData.append(
+      "json",
+      JSON.stringify({
+        title: board.title,
+        list: board.additionalInfo,
+      })
+    );
+
+    fetch("http://localhost:3000/posts/", {
+      method: "POST",
+      body: formData,
+      headers: {},
+    });
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.log(json.ok);
+    //     if (!!json.ok) {
+    //       window.location.reload();
+    //     }
+    //   });
+  }; //폼 제출을 처리하는 submitPost 함수, 기본 제출 동작 막고 파일과 포스트 데이터 추가. 그리고 fetch사용하여 서버에 POST 요청
+  const [recapData, setRecapData] = useState({});
+  useEffect(() => {
+    //처음 한번만 실행하기 위해
+    fetch(`http://localhost:3000/posts/${postId}`, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ qid: id }),
+    })
+      .then((data) => data.json())
+      .then((json) => setRecapData(json));
+  }, [postId, id]);
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -88,7 +136,7 @@ const BoardWrite = () => {
   };
 
   const noFeedMessage =
-    additionalInfo.length === 0 && !contents ? (
+    additionalInfo.length === 0 && !cosName ? (
       <p>
         <div className={styles.feed}>
           <img src={Basket} alt="basketimg"></img>
@@ -136,18 +184,18 @@ const BoardWrite = () => {
                 placeholder="제목을 입력해주세요. "
               />
             </div>
-            <div className={styles.contents}>
+            <div className={styles.cosName}>
               <input
                 className={styles.brand}
-                name="createdBy"
-                value={createdBy}
+                name="brandName"
+                value={brandName}
                 onChange={onChange}
                 placeholder="브랜드명"
               />
               <input
                 className={styles.product}
-                name="contents"
-                value={contents}
+                name="cosName"
+                value={cosName}
                 onChange={onChange}
                 placeholder="화장품명"
               />
@@ -175,9 +223,11 @@ const BoardWrite = () => {
           <div className={styles.buttonContainer}>
             <div className={styles.save}>
               <React.Fragment>
-                <button onClick={openModal}>작성 완료</button>
+                <button type="submit" onClick={submitPost}>
+                  작성 완료
+                </button>
 
-                <Modal open={modalOpen} close={closeModal}>
+                <Modal open={modalOpen} setOpen={setModalOpen}>
                   피드 작성이 완료되었습니다!
                 </Modal>
               </React.Fragment>

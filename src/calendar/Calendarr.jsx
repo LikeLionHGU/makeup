@@ -1,4 +1,5 @@
 import {
+  addDays,
   format,
   getMonth,
   getYear,
@@ -25,6 +26,7 @@ function Calendarr() {
   const [reservedDate, setreservedDate] = useState(new Date());
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
+  const [data, setData] = useState([]);
   // const [isSelected, setIsSelected] = useState(false);
 
   useEffect(() => {
@@ -35,7 +37,14 @@ function Calendarr() {
     setStartTime(time);
     // setIsSelected(true);
   };
-
+  useEffect(() => {
+    // API 호출
+    fetch("http://localhost:8080/reservation/view/mento/18")
+      .then((response) => response.json())
+      .then((data) => setData(data));
+  }, []);
+  const availDate = data.map((item) => item.mentoDate);
+  console.log({ availDate });
   return (
     <div>
       {" "}
@@ -55,8 +64,10 @@ function Calendarr() {
               // dateFormat="yyyy/MM/dd"
               selected={reservedDate}
               onChange={(date) => setreservedDate(date)}
+              includeDates={availDate}
               minDate={subDays(new Date(), 0)}
               inline
+              disabledKeyboardNavigation
               // className={styles.dateinput}
               renderCustomHeader={({
                 date,
