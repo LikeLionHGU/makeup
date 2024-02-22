@@ -39,10 +39,12 @@ function Calendarr() {
   };
   useEffect(() => {
     // API 호출
-    fetch("https://api.zionhann.shop/app/makeup/reservation/view/mento/18")
+    fetch("https://api.zionhann.shop/app/makeup/reservation/view/mento/")
+
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
+
   const availDate = data.map((item) => item.mentoDate);
   console.log({ availDate });
   return (
