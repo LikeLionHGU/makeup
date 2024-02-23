@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./Grid.module.css";
 import heart from "./heart.png";
 
@@ -9,13 +9,13 @@ function Grid() {
 
   useEffect(() => {
     // API 호출
-    fetch("https://api.zionhann.shop/app/makeup/posts/images")
+    fetch("https://api.zionhann.shop/app/makeup/posts")
       .then((response) => response.json())
       .then((data) => setData(data.data));
   }, []);
 
-  const handleContainerClick = () => {
-    navigate("/UploadPost");
+  const handleContainerClick = (postid) => {
+    navigate("/UploadPost/" + postid);
   };
 
   const truncate = (str, n) => {
@@ -54,9 +54,9 @@ function Grid() {
               return (
                 <div className={styles.bottom}>
                   <div
-                    key={item.photo_id}
+                    key={item.postId}
                     className={styles.rect}
-                    onClick={() => handleContainerClick()}
+                    onClick={() => handleContainerClick(item.postId)}
                     style={{ backgroundImage: `url(${item.imageUrl})` }}
                   >
                     <div className={styles.hoverText}>

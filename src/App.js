@@ -18,6 +18,7 @@ import MentoCalendar from "./calendarMento/MentoCalendar";
 import SearchBoard from "./search/SearchBoard";
 
 import UploadPost from "./uploadPost/UploadPost";
+import { Grid } from "swiper/modules";
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
           <Route path="/board" element={<BoardList />} />
           <Route path="/searchboard" element={<SearchBoard />} />
           <Route path="/write" element={<BoardWrite />} />
-          <Route path="/uploadPost" element={<UploadPost />} />
+          <Route path="/uploadPost/:postId" element={<UploadPost />} />
         </Routes>
       </BrowserRouter>
     </div>
