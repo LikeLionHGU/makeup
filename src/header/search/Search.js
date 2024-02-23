@@ -1,9 +1,11 @@
 import { useState } from "react";
 import dummy from "./dummydata.json";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Search() {
   const [search, setSearch] = useState("");
   const [member] = useState(dummy.data);
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setSearch(e.target.value);
@@ -30,20 +32,22 @@ export default function Search() {
     );
   });
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      console.log({ search });
+      navigate("/searchboard", { state: { search } });
+    }
+  };
+
   return (
     <div>
       <div className="content">
-        <input type="text" value={search} onChange={onChange}></input>
-        {search !== "" &&
-          filterResult
-            .filter((member) => member !== null)
-            .map((member) => (
-              <div>
-                <span>{member.title} </span>
-                <span> {member.body} </span>
-                <span> {member.nickname}</span>
-              </div>
-            ))}
+        <input
+          type="text"
+          value={search}
+          onChange={onChange}
+          onKeyDown={handleKeyPress}
+        ></input>
       </div>
     </div>
   );
