@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
 .header {
   padding-top: 29px;
   /* padding-left: 16.3%;
@@ -8,6 +13,9 @@
   margin: auto;
   position: relative;
   justify-content: center;
+  font-family: "Pretendard-Regular";
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .header .logo h1 {
@@ -92,4 +100,10 @@
 #profile img {
   width: 30px;
   height: 30px;
+}
+
+.post button {
+  font-family: "Pretendard-Regular";
+  font-size: 14px;
+  font-weight: 400;
 }
