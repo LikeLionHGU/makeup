@@ -21,7 +21,8 @@ const LogIn = () => {
 
   const [email, setEmailinput] = useState("");
   const [password, setPasswordinput] = useState("");
-  const [isSuccessful, setisSuccessfulinput] = useState("");
+  const [success, setsuccessinput] = useState("");
+  const [date, setdateinput] = useState("");
   const [memberId, setmemberId] = useState("");
 
   const [message, setMessage] = useState("");
@@ -38,18 +39,18 @@ const LogIn = () => {
       body: JSON.stringify({
         email: email,
         password: password,
-        isSuccessful: isSuccessful,
-        memberId: memberId,
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        if (result.isSuccessful) {
-          console.log("Saving to local storage", result.memberId);
-          localStorage.setItem("member_id", JSON.stringify(result.memberId));
+        if (result.success) {
+          console.log("local storage", result.data.memberId);
+          localStorage.setItem(
+            "member_id",
+            JSON.stringify(result.data.memberId)
+          );
           navigate("/");
         } else {
-          console.log("AAaAAA", result.isSuccessful);
           setMessage(
             // { warningicon },
             "아이디 또는 비밀번호를 잘못 입력했습니다. 입력하신 내용을 다시 확인해주세요."
@@ -93,7 +94,7 @@ const LogIn = () => {
                   value={email}
                   onChange={(e) => {
                     setEmailinput(e.target.value);
-                    console.log(isSuccessful);
+                    console.log(success);
                   }}
                   className={!message ? "inputLogin" : "err_email"}
                   placeholder="아이디(이메일)"
