@@ -20,7 +20,7 @@
 }
 
 .react-datepicker__month-container {
-  padding-top: 25px;
+  /* padding-top: 25px; */
 }
 
 .react-datepicker__month {
@@ -28,9 +28,9 @@
   font-size: 16px;
   font-family: "Pretendard-Regular";
   font-weight: 400;
-  padding-left: 30px;
+  /* padding-left: 30px; */
   padding-right: 0;
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 
 .react-datepicker__day {

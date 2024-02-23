@@ -73,7 +73,7 @@ const BoardWrite = () => {
 
   const submitPost = (e) => {
     e.preventDefault();
-    console.log("aaa");
+    // console.log("aaa");
     openModal();
     const formData = new FormData();
     // console.log("Submit Post Called!");
@@ -91,14 +91,14 @@ const BoardWrite = () => {
       method: "POST",
       body: formData,
       headers: { "Content-type": "application/json" },
-    });
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     console.log(json.ok);
-    //     if (!!json.ok) {
-    //       window.location.reload();
-    //     }
-    //   });
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json.ok);
+        if (!!json.ok) {
+          window.location.reload();
+        }
+      });
   }; //폼 제출을 처리하는 submitPost 함수, 기본 제출 동작 막고 파일과 포스트 데이터 추가. 그리고 fetch사용하여 서버에 POST 요청
   const [recapData, setRecapData] = useState({});
   useEffect(() => {
