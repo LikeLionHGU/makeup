@@ -49,8 +49,9 @@ function Calendarr() {
   }, [id]);
 
   console.log(data);
-  // const availDate = data.map((item) => item.mentoDate);
-  // console.log({ availDate });
+  if (!data) return <div>Loading...</div>;
+  const availDate = data.availableDates;
+  console.log(availDate);
   return (
     <div>
       {" "}
@@ -67,10 +68,10 @@ function Calendarr() {
             <DatePicker
               locale={ko}
               ref={calendarRef}
-              // dateFormat="yyyy/MM/dd"
+              dateFormat="yyyy/MM/dd"
               selected={reservedDate}
               onChange={(date) => setreservedDate(date)}
-              // includeDates={availDate}
+              includeDates={availDate}
               minDate={subDays(new Date(), 0)}
               inline
               disabledKeyboardNavigation
