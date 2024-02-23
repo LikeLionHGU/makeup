@@ -11,7 +11,7 @@ import logout from "./image/logout.png";
 
 import styles from "./Header.module.css";
 
-export default function Header() {
+export default function Header({ search }) {
   return (
     <div className={styles.header}>
       <span className={styles.logo}>
@@ -21,7 +21,7 @@ export default function Header() {
         </Link>
       </span>
       <span id={styles.search}>
-        <Search></Search>
+        <Search search={search}></Search>
       </span>
       <span id={styles.post}>
         <Link to="/write">
