@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import styles from "./Modal.module.css";
 import subimg from "./Subtract.png";
+import { useNavigate } from "react-router-dom";
 
 const Modal = (props) => {
   const { open, setOpen } = props;
+  const navigate = useNavigate();
 
   const closeModal = () => {
     setOpen(false);
+    navigate("/");
   };
 
   return (
