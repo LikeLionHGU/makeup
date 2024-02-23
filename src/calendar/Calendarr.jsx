@@ -23,12 +23,12 @@ import spring from "./img/spring.png";
 import spring2 from "./img/spring2.png";
 
 function Calendarr() {
+  const member_id = localStorage.getItem("member_id");
   const [reservedDate, setreservedDate] = useState(new Date());
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
   const [data, setData] = useState([]);
   // const [isSelected, setIsSelected] = useState(false);
-
   useEffect(() => {
     calendarRef.current.setFocus();
   }, []);
@@ -39,14 +39,16 @@ function Calendarr() {
   };
   useEffect(() => {
     // API 호출
-    fetch("https://api.zionhann.shop/app/makeup/reservation/view/mento/")
 
+    fetch(
+      "https://api.zionhann.shop/app/makeup/reservation/view/mento/" + member_id
+    )
       .then((response) => response.json())
       .then((data) => setData(data));
   }, []);
 
-  const availDate = data.map((item) => item.mentoDate);
-  console.log({ availDate });
+  // const availDate = data.map((item) => item.mentoDate);
+  // console.log({ availDate });
   return (
     <div>
       {" "}
@@ -66,7 +68,7 @@ function Calendarr() {
               // dateFormat="yyyy/MM/dd"
               selected={reservedDate}
               onChange={(date) => setreservedDate(date)}
-              includeDates={availDate}
+              // includeDates={availDate}
               minDate={subDays(new Date(), 0)}
               inline
               disabledKeyboardNavigation
@@ -128,7 +130,7 @@ function Calendarr() {
                 )}
               </div>
 
-              <div className={styles.selected_time}>
+              {/* <div className={styles.selected_time}>
                 <p>
                   원하는 시간
                   <DatePicker
@@ -148,7 +150,8 @@ function Calendarr() {
                     className={styles.timeinput}
                   />
                 </p>
-              </div>
+              </div> */}
+              <button className={styles.subButton}>작성 완료</button>
             </div>
           </span>
         </div>

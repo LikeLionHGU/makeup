@@ -14,16 +14,16 @@ const BoardWrite = () => {
   const [board, setBoard] = useState({
     title: "",
     brandName: "",
-    cosName: "",
+    productName: "",
     image: null,
-    additionalInfo: [],
+    brandProducts: [],
   });
   const [file, setFile] = useState(null);
   const postId = localStorage.getItem("postId");
   const params = useParams();
   const id = params.happy;
 
-  const { title, brandName, cosName, image, additionalInfo, list } = board;
+  const { title, brandName, productName, image, brandProducts } = board;
 
   const onChange = (event) => {
     setBoard({
@@ -37,14 +37,14 @@ const BoardWrite = () => {
     }
   };
   const onAddInfo = () => {
-    if (cosName && brandName) {
+    if (productName && brandName) {
       setBoard((prevBoard) => ({
         ...prevBoard,
-        additionalInfo: [
-          ...prevBoard.additionalInfo,
-          { brand: brandName, product: cosName },
+        brandProducts: [
+          ...prevBoard.brandProducts,
+          { brandName: brandName, productName: productName },
         ],
-        cosName: "",
+        productName: "",
         brandName: "",
       }));
     }
@@ -52,12 +52,12 @@ const BoardWrite = () => {
 
   const onDeleteInfo = (index) => {
     setBoard((prevBoard) => {
-      const updatedInfo = [...prevBoard.additionalInfo];
+      const updatedInfo = [...prevBoard.brandProducts];
       updatedInfo.splice(index, 1);
 
       return {
         ...prevBoard,
-        additionalInfo: updatedInfo,
+        brandProducts: updatedInfo,
       };
     });
   };
@@ -73,7 +73,7 @@ const BoardWrite = () => {
 
   const submitPost = (e) => {
     e.preventDefault();
-    console.log("aaa");
+    // console.log("aaa");
     openModal();
     const formData = new FormData();
     // console.log("Submit Post Called!");
@@ -83,27 +83,27 @@ const BoardWrite = () => {
       "json",
       JSON.stringify({
         title: board.title,
-        list: board.additionalInfo,
+        brandProducts: board.brandProducts,
       })
     );
 
-    fetch("http://localhost:3000/posts/", {
+    fetch("https://api.zionhann.shop/app/makeup/posts", {
       method: "POST",
       body: formData,
-      headers: {},
-    });
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     console.log(json.ok);
-    //     if (!!json.ok) {
-    //       window.location.reload();
-    //     }
-    //   });
+      headers: { "Content-type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json.ok);
+        if (!!json.ok) {
+          window.location.reload();
+        }
+      });
   }; //폼 제출을 처리하는 submitPost 함수, 기본 제출 동작 막고 파일과 포스트 데이터 추가. 그리고 fetch사용하여 서버에 POST 요청
   const [recapData, setRecapData] = useState({});
   useEffect(() => {
     //처음 한번만 실행하기 위해
-    fetch(`http://localhost:3000/posts/${postId}`, {
+    fetch(`https://api.zionhann.shop/app/makeup/posts${postId}`, {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({ qid: id }),
@@ -136,7 +136,7 @@ const BoardWrite = () => {
   };
 
   const noFeedMessage =
-    additionalInfo.length === 0 && !cosName ? (
+    brandProducts.length === 0 && !productName ? (
       <p>
         <div className={styles.feed}>
           <img src={Basket} alt="basketimg"></img>
@@ -184,7 +184,7 @@ const BoardWrite = () => {
                 placeholder="제목을 입력해주세요. "
               />
             </div>
-            <div className={styles.cosName}>
+            <div className={styles.productName}>
               <input
                 className={styles.brand}
                 name="brandName"
@@ -194,8 +194,8 @@ const BoardWrite = () => {
               />
               <input
                 className={styles.product}
-                name="cosName"
-                value={cosName}
+                name="productName"
+                value={productName}
                 onChange={onChange}
                 placeholder="화장품명"
               />
@@ -203,10 +203,10 @@ const BoardWrite = () => {
                 추가
               </button>
               <ul className={styles.scroll}>
-                {additionalInfo.map((info, index) => (
+                {brandProducts.map((info, index) => (
                   <div className={styles.Btn} key={index}>
-                    <p className={styles.inputBrand}>{info.brand}</p>
-                    <p className={styles.intputProduct}>{info.product}</p>
+                    <p className={styles.inputBrand}>{info.brandName}</p>
+                    <p className={styles.intputProduct}>{info.productName}</p>
                     <button
                       className={styles.deleteBtn}
                       onClick={() => onDeleteInfo(index)}
