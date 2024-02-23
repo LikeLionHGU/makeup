@@ -8,6 +8,7 @@ export default function Search() {
   const onChange = (e) => {
     setSearch(e.target.value);
   };
+
   const filterResult = member.filter((p) => {
     return (
       p.title

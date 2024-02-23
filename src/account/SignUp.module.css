@@ -10,6 +10,11 @@
   padding-bottom: 40px;
 }
 
+.logo img {
+  width: 200px;
+  height: 40px;
+}
+
 .signup_rect {
   border-radius: 30px;
   text-align: center;
@@ -50,7 +55,7 @@
   display: none;
 }
 .gender input[type="radio"] + label {
-  width: 240px;
+  width: 245px;
   height: 30px;
   border-radius: 10px;
   display: inline-block;
@@ -94,4 +99,8 @@ label {
 
 .signup_input input:focus {
   border: 1px solid red;
+}
+
+.signup_input p {
+  font-size: small;
 }

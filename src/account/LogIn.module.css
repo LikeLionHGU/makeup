@@ -1,6 +1,5 @@
 .login {
-  padding-left: 30vh;
-  padding-right: 24.7vh;
+  padding: auto;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11,10 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 .login .logo img {
-  width: 150px;
+  width: 200px;
 }
 
 .rect {
@@ -44,8 +43,9 @@
 .input_rect {
   width: 502px;
   height: 52px;
-  margin-left: 74px;
-  margin-right: 74px;
+  margin: auto;
+  /* margin-left: 74px;
+  margin-right: 74px; */
   border: 1.5px solid #ff8bc5;
   border-radius: 20px;
   display: flex;
@@ -104,6 +104,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .btn button {
   width: 326px;
   height: 60px;
@@ -112,7 +113,7 @@
   border: none;
 }
 .buttonlogin {
-  margin-top: 44px;
+  margin-top: 30px;
   margin-bottom: 15px;
   background-color: #fc389a;
 }
@@ -120,6 +121,7 @@
   background-color: #ffe812;
 }
 .warning {
+  padding-top: 10px;
   color: red;
   font-size: small;
 }
