@@ -11,7 +11,7 @@ function Grid() {
     // API 호출
     fetch("https://api.zionhann.shop/app/makeup/posts")
       .then((response) => response.json())
-      .then((data) => setData(data.data));
+      .then((data) => setData(data.data.sort((a, b) => b.postId - a.postId)));
   }, []);
 
   const handleContainerClick = (postid) => {
@@ -60,7 +60,7 @@ function Grid() {
                     style={{ backgroundImage: `url(${item.imageUrl})` }}
                   >
                     <div className={styles.hoverText}>
-                      {truncate(item.text, 12)}
+                      # {truncate(item.title, 12)}
                     </div>
 
                     <img

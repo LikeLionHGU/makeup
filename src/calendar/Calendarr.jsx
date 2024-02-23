@@ -12,7 +12,7 @@ import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
 import "../../node_modules/react-datepicker/dist/react-datepicker.css";
 import "../../node_modules/react-datepicker/dist/react-datepicker.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import styles from "./Calendarr.module.css";
 import Header from "../header/Header";
@@ -31,6 +31,7 @@ function Calendarr() {
   const [data, setData] = useState([]);
   const params = useParams();
   const id = params.postId;
+  const navigate = useNavigate();
   // const [isSelected, setIsSelected] = useState(false);
   useEffect(() => {
     calendarRef.current.setFocus();
@@ -154,7 +155,12 @@ function Calendarr() {
                   />
                 </p>
               </div> */}
-              <button className={styles.subButton}>작성 완료</button>
+              <button
+                className={styles.subButton}
+                onClick={() => navigate("/")}
+              >
+                작성 완료
+              </button>
             </div>
           </span>
         </div>
