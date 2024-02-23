@@ -12,6 +12,7 @@ import ko from "date-fns/locale/ko";
 import DatePicker from "react-datepicker";
 import "../../node_modules/react-datepicker/dist/react-datepicker.css";
 import "../../node_modules/react-datepicker/dist/react-datepicker.module.css";
+import { useParams } from "react-router-dom";
 
 import styles from "./Calendarr.module.css";
 import Header from "../header/Header";
@@ -28,6 +29,8 @@ function Calendarr() {
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
   const [data, setData] = useState([]);
+  const params = useParams();
+  const id = params.postId;
   // const [isSelected, setIsSelected] = useState(false);
   useEffect(() => {
     calendarRef.current.setFocus();
@@ -40,15 +43,15 @@ function Calendarr() {
   useEffect(() => {
     // API 호출
 
-    fetch(
-      "https://api.zionhann.shop/app/makeup/reservation/view/mento/" + member_id
-    )
+    fetch(`https://api.zionhann.shop/app/makeup/posts/${id}`)
       .then((response) => response.json())
-      .then((data) => setData(data));
-  }, []);
+      .then((data) => setData(data.data));
+  }, [id]);
 
-  // const availDate = data.map((item) => item.mentoDate);
-  // console.log({ availDate });
+  console.log(data);
+  if (!data) return <div>Loading...</div>;
+  const availDate = data.availableDates;
+  console.log(availDate);
   return (
     <div>
       {" "}
@@ -65,10 +68,10 @@ function Calendarr() {
             <DatePicker
               locale={ko}
               ref={calendarRef}
-              // dateFormat="yyyy/MM/dd"
+              dateFormat="yyyy/MM/dd"
               selected={reservedDate}
               onChange={(date) => setreservedDate(date)}
-              // includeDates={availDate}
+              includeDates={availDate}
               minDate={subDays(new Date(), 0)}
               inline
               disabledKeyboardNavigation

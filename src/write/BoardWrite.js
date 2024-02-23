@@ -7,6 +7,7 @@ import photoimg from "./Group 9.png";
 import Modal from "../modal/modal";
 import Delete from "./delete.png";
 import Basket from "./basket.png";
+import MentoCalendar from "../calendarMento/MentoCalendar";
 
 const BoardWrite = () => {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ const BoardWrite = () => {
   const postId = localStorage.getItem("postId");
   const params = useParams();
   const id = params.happy;
+  const memberId = localStorage.getItem("member_id");
+
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const { title, brandName, productName, image, brandProducts } = board;
 
@@ -33,7 +37,7 @@ const BoardWrite = () => {
   };
   const saveFile = (e) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+      // setFile(e.target.files[0]);
     }
   };
   const onAddInfo = () => {
@@ -78,19 +82,32 @@ const BoardWrite = () => {
     const formData = new FormData();
     // console.log("Submit Post Called!");
     // console.log({ file, title, list });
-    formData.append("file", board.image);
+    formData.append("file", file);
+    // formData.append("json", {
+    //   title: board.title,
+    //   brandProducts: board.brandProducts,
+    //   memberId: 1,
+    // });
     formData.append(
       "json",
-      JSON.stringify({
-        title: board.title,
-        brandProducts: board.brandProducts,
-      })
+      new Blob(
+        [
+          JSON.stringify({
+            title: board.title,
+            brandProducts: board.brandProducts,
+            memberId: memberId,
+          }),
+        ],
+        {
+          type: "application/json",
+        }
+      )
     );
 
     fetch("https://api.zionhann.shop/app/makeup/posts", {
       method: "POST",
       body: formData,
-      headers: { "Content-type": "application/json" },
+      // headers: { "Content-type": "multipart/form-data" },
     })
       .then((response) => response.json())
       .then((json) => {
@@ -114,6 +131,7 @@ const BoardWrite = () => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    setFile(event.target.files[0]);
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -146,12 +164,16 @@ const BoardWrite = () => {
       </p>
     ) : null;
 
+  if (isCalendarOpen) {
+    return <MentoCalendar setIsCalendarOpen={setIsCalendarOpen} />;
+  }
+
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Header />} />
-      </Routes>
-
+      {/* <Routes>
+        <Route path="/" element={} />
+      </Routes> */}
+      <Header />
       <div className={styles.rect}>
         <div className={styles.left}>
           {image ? (
@@ -233,7 +255,7 @@ const BoardWrite = () => {
               </React.Fragment>
             </div>
             <div className={styles.date}>
-              <button onClick={saveBoard}>날짜 설정</button>
+              <button onClick={() => setIsCalendarOpen(true)}>날짜 설정</button>
             </div>
             {/* 날짜 설정 페이지로 이동하기 */}
           </div>

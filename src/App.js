@@ -20,7 +20,6 @@ import SearchBoard from "./search/SearchBoard";
 import UploadPost from "./uploadPost/UploadPost";
 import { Grid } from "swiper/modules";
 
-
 function App() {
   return (
     <div className="App">
@@ -31,7 +30,10 @@ function App() {
           <Route path="/login" element={<LogIn />}></Route>
 
           <Route path="/complete" element={<Complete />}></Route>
-          <Route path="/calendar" element={<Calendarr />}></Route>
+          <Route
+            path="/UploadPost/:postId/calendar"
+            element={<Calendarr />}
+          ></Route>
           <Route path="/calendarmento" element={<MentoCalendar />}></Route>
 
           <Route path="/board" element={<BoardList />} />
