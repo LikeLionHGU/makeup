@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useParams } from "react-router-dom";
+import { useNavigate, Route, Routes, useParams } from "react-router-dom";
 import Header from "../header/Header";
 import styles from "./UploadPost.module.css";
-import go from "./go.jpg";
 
 function UploadPost() {
   const [data, setData] = useState(null);
   const params = useParams();
   const id = params.postId;
-
+  const navigate = useNavigate();
   useEffect(() => {
     // API 호출
     fetch(`https://api.zionhann.shop/app/makeup/posts/${id}`)
@@ -56,7 +55,12 @@ function UploadPost() {
           <div className={styles.brandName4}>Peripera(페리페라) </div>
           <div className={styles.productName4}>잉크 블랙 카라_02블랙</div>
           <div className={styles.line4}></div> */}
-          <button className={styles.button}>멘토링 신청</button>
+          <button
+            className={styles.button}
+            onClick={() => navigate("./calendar")}
+          >
+            멘토링 신청
+          </button>
         </div>
       </div>
     </div>
