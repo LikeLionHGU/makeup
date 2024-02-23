@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+}
 .rect {
   display: flex;
   border-radius: 40px;
@@ -29,6 +34,7 @@
   font-weight: 600;
   font-size: 28px;
   padding-top: 20px;
+  margin-bottom: 40px;
 }
 
 .right {
@@ -48,6 +54,7 @@
 
 .brandName {
   font-weight: 600;
+  margin-bottom: 3px;
   /* position: absolute; */
   /* top: 120px; */
 }
