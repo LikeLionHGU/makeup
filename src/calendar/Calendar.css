@@ -16,6 +16,7 @@
 }
 
 .react-datepicker {
+  width: 420px;
   border: none;
 }
 
@@ -163,4 +164,12 @@
 
 .MentoCalendar_reservation__az2SB .MentoCalendar_image__Dcr-X {
   margin-top: 60px !important;
+}
+.Calendarr_selected_date__UVZGB {
+  margin-left: 30px;
+}
+
+.Calendarr_select_date__Iqy9W {
+  margin-top: 20px;
+  margin-right: 100px;
 }
