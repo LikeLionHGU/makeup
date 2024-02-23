@@ -14,8 +14,8 @@ function Grid() {
       .then((data) => setData(data.data));
   }, []);
 
-  const handleContainerClick = (num) => {
-    navigate("/post/" + num);
+  const handleContainerClick = () => {
+    navigate("/UploadPost");
   };
 
   const truncate = (str, n) => {
@@ -56,7 +56,7 @@ function Grid() {
                   <div
                     key={item.photo_id}
                     className={styles.rect}
-                    onClick={() => handleContainerClick(item.photo_id)}
+                    onClick={() => handleContainerClick()}
                     style={{ backgroundImage: `url(${item.imageUrl})` }}
                   >
                     <div className={styles.hoverText}>

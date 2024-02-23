@@ -1,0 +1,131 @@
+.rect {
+  display: flex;
+  border-radius: 40px;
+  box-shadow: 0px 0px 10px #a2a2a2;
+  width: 100%;
+  height: 630px;
+  max-width: 1019px;
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: 0px;
+  padding: 25px;
+  position: relative;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.photo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 460px;
+  border-radius: 40px;
+}
+
+.title {
+  display: inline-block;
+  width: 100%;
+  font-family: "Pretendard-Regular";
+  font-weight: 600;
+  font-size: 28px;
+  padding-top: 20px;
+}
+
+.right {
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+}
+.left {
+  width: 50%;
+}
+.brandName {
+  font-weight: 600;
+  position: absolute;
+  top: 120px;
+}
+
+.productName {
+  font-weight: 400;
+  position: absolute;
+  top: 150px;
+}
+.line {
+  content: "";
+  width: 45%;
+  border-bottom: 2px dashed black;
+  position: absolute;
+  top: 190px;
+}
+.brandName2 {
+  font-weight: 600;
+  position: absolute;
+  top: 210px;
+}
+
+.productName2 {
+  font-weight: 400;
+  position: absolute;
+  top: 240px;
+}
+.line2 {
+  content: "";
+  width: 45%;
+  border-bottom: 2px dashed black;
+  position: absolute;
+  top: 280px;
+}
+
+.button {
+  border-color: #fc389a;
+  border-style: solid;
+  border-radius: 10px;
+  width: 200px;
+  height: 36px;
+  background-color: #ffffff;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+}
+.brandName3 {
+  font-weight: 600;
+  position: absolute;
+  top: 300px;
+}
+
+.productName3 {
+  font-weight: 400;
+  position: absolute;
+  top: 330px;
+}
+.line3 {
+  content: "";
+  width: 45%;
+  border-bottom: 2px dashed black;
+  position: absolute;
+  top: 370px;
+}
+.brandName4 {
+  font-weight: 600;
+  position: absolute;
+  top: 390px;
+}
+
+.productName4 {
+  font-weight: 400;
+  position: absolute;
+  top: 420px;
+}
+.line4 {
+  content: "";
+  width: 45%;
+  border-bottom: 2px dashed black;
+  position: absolute;
+  top: 460px;
+}
