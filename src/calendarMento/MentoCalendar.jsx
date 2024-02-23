@@ -22,7 +22,7 @@ import spring from "../calendar/img/spring.png";
 import spring2 from "../calendar/img/spring2.png";
 import calendar from "./calendar.png";
 
-function MentoCalendar() {
+function MentoCalendar({ setIsCalendarOpen }) {
   const [mentoDate, setmentoDate] = useState(new Date());
   const calendarRef = useRef(null);
   const [startTime, setStartTime] = useState(null);
@@ -153,7 +153,9 @@ function MentoCalendar() {
                 </p>
               </div>
               <div className={styles.btn}>
-                <button onClick={datepick}>설정 완료</button>
+                <button onClick={() => setIsCalendarOpen(false)}>
+                  설정 완료
+                </button>
               </div>
             </div>
           </span>
