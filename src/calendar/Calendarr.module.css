@@ -105,3 +105,19 @@
   cursor: default;
   visibility: hidden;
 }
+
+.subButton {
+  border-color: #fc389a;
+  border-style: solid;
+  border-radius: 50px;
+  width: 93px;
+  height: 49px;
+  background-color: #ffffff;
+  color: #fc389a;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: "Pretendard-Regular";
+  position: relative;
+  margin-left: 75px;
+  margin-top: 250px;
+}

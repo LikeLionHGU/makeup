@@ -41,7 +41,11 @@ function MentoCalendar() {
     // setIsSelected(true);
   };
 
-  const datepick = () => {
+  const datepick = (date) => {
+    const year = date.getFullYear();
+    const month = ("0" + (date.getMonth() + 1)).slice(-2);
+    const day = ("0" + date.getDate()).slice(-2);
+    const dateString = year + "-" + month + "-" + day;
     fetch("https://api.zionhann.shop/app/makeup/reservation/mento", {
       method: "POST",
       headers: {
@@ -49,7 +53,7 @@ function MentoCalendar() {
       },
       body: JSON.stringify({
         memberId: localStorage.getItem("member_id"),
-        mentoDate: mentoDate,
+        mentoDate: dateString,
       }),
     })
       .then((response) => response.json())
@@ -79,7 +83,7 @@ function MentoCalendar() {
               highlightDates={selectedDate}
               // className={styles.dateinput}
               onChange={(date) => {
-                datepick();
+                datepick(date);
 
                 setselectedDate((prev) => {
                   if (prev.find((d) => d.getTime() === date.getTime())) {
