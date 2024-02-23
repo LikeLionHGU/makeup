@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import heart from "./heart.png";
 
@@ -10,10 +10,12 @@ import styles from "./searchboard.module.css";
 export default function SearchBoard() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const { state } = useLocation();
+  // const {search} = state;
 
   useEffect(() => {
     // API 호출
-    fetch("https://api.zionhann.shop/app/makeup/posts/images")
+    fetch("https://api.zionhann.shop/app/makeup/posts/search?keyword=")
       .then((response) => response.json())
       .then((data) => setData(data.data));
   }, []);
@@ -25,6 +27,21 @@ export default function SearchBoard() {
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
+
+  // const search = ({ state }) => {
+  //   {
+  //     state !== "" &&
+  //       filterResult
+  //         .filter((state) => state !== null)
+  //         .map((state) => (
+
+  //             {state.postID}
+  //              {state.imageUrl}
+  //            {state.title}
+
+  //         ));
+  //   }
+  // };
 
   if (data.length === 0) return <>loading...</>;
 
