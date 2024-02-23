@@ -15,6 +15,7 @@ import Complete from "./account/Complete";
 import Calendarr from "./calendar/Calendarr";
 import MentoCalendar from "./calendarMento/MentoCalendar";
 import UploadPost from "./uploadPost/UploadPost";
+import { Grid } from "swiper/modules";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
 
           <Route path="/board" element={<BoardList />} />
           <Route path="/write" element={<BoardWrite />} />
-          <Route path="/uploadPost" element={<UploadPost />} />
+          <Route path="/uploadPost/:postId" element={<UploadPost />} />
         </Routes>
       </BrowserRouter>
     </div>

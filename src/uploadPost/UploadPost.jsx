@@ -1,9 +1,20 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useParams } from "react-router-dom";
 import Header from "../header/Header";
 import styles from "./UploadPost.module.css";
 import go from "./go.jpg";
 function UploadPost() {
+  const [data, setData] = useState([]);
+  const params = useParams();
+  const id = params.postId;
+
+  useEffect(() => {
+    // API 호출
+    fetch(`https://api.zionhann.shop/app/makeup/posts/{postId}/${id}`)
+      .then((response) => response.json())
+      .then((data) => setData(data.data));
+  }, []);
+
   return (
     <div>
       <Routes>
