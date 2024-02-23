@@ -42,24 +42,28 @@ function MentoCalendar() {
     // setIsSelected(true);
   };
 
-  const datepick = (date) => {
+  const formatDate = (date) => {
     const year = date.getFullYear();
     const month = ("0" + (date.getMonth() + 1)).slice(-2);
     const day = ("0" + date.getDate()).slice(-2);
-    const dateString = year + "-" + month + "-" + day;
-    fetch("https://api.zionhann.shop/app/makeup/posts/calendar/{memberId}", {
-      // fetch("https://api.zionhann.shop/app/makeup/reservation/mento", {
+    return year + "-" + month + "-" + day;
+  };
+
+  const datepick = () => {
+    const formattedDate = selectedDate.map((date) => formatDate(date));
+    const memberId = localStorage.getItem("member_id");
+
+    fetch(`https://api.zionhann.shop/app/makeup/posts/calendar/${memberId}`, {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,
       },
       body: JSON.stringify({
-        memberId: localStorage.getItem("member_id"),
-        mentoDate: dateString,
+        availableDates: formattedDate,
       }),
     })
       .then((response) => response.json())
-      .then((result) => console.log("결과: ", result));
+      .then((result) => console.log("결과: ", availableDates));
   };
 
   return (
@@ -85,17 +89,15 @@ function MentoCalendar() {
               highlightDates={selectedDate}
               // className={styles.dateinput}
               onChange={(date) => {
-                datepick(date);
+                // datepick(date);
 
                 setselectedDate((prev) => {
                   if (prev.find((d) => d.getTime() === date.getTime())) {
                     return [
                       ...prev.filter((d) => d.getTime() !== date.getTime()),
                     ];
-                  } else {
-                    setmentoDate(date);
-                    return [...prev, date];
                   }
+                  return [...prev, date];
                 });
               }}
               renderCustomHeader={({
