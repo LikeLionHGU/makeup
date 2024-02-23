@@ -11,31 +11,31 @@ export default function Search() {
     setSearch(e.target.value);
   };
 
-  const filterResult = member.filter((p) => {
-    return (
-      p.title
-        .replace(" ", "")
-        .toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase().replace(" ", "")) ||
-      p.body
-        .replace(" ", "")
-        .toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase().replace(" ", "")) ||
-      p.tag
-        .replace(" ", "")
-        .toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase().replace(" ", "")) ||
-      p.nickname
-        .replace(" ", "")
-        .toLocaleLowerCase()
-        .includes(search.toLocaleLowerCase().replace(" ", ""))
-    );
-  });
+  // const filterResult = member.filter((p) => {
+  //   return (
+  //     p.title
+  //       .replace(" ", "")
+  //       .toLocaleLowerCase()
+  //       .includes(search.toLocaleLowerCase().replace(" ", "")) ||
+  //     p.body
+  //       .replace(" ", "")
+  //       .toLocaleLowerCase()
+  //       .includes(search.toLocaleLowerCase().replace(" ", "")) ||
+  //     p.tag
+  //       .replace(" ", "")
+  //       .toLocaleLowerCase()
+  //       .includes(search.toLocaleLowerCase().replace(" ", "")) ||
+  //     p.nickname
+  //       .replace(" ", "")
+  //       .toLocaleLowerCase()
+  //       .includes(search.toLocaleLowerCase().replace(" ", ""))
+  //   );
+  // });
 
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       console.log({ search });
-      navigate("/searchboard", { state: { search } });
+      navigate("/searchboard", { search });
     }
   };
 

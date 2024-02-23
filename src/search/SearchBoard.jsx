@@ -10,7 +10,7 @@ import styles from "./searchboard.module.css";
 export default function SearchBoard() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const { state } = useLocation();
+  const { search } = useLocation();
   // const {search} = state;
 
   useEffect(() => {
@@ -28,16 +28,16 @@ export default function SearchBoard() {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
 
-  // const search = ({ state }) => {
+  // const search = ({ search }) => {
   //   {
-  //     state !== "" &&
+  //     search !== "" &&
   //       filterResult
-  //         .filter((state) => state !== null)
-  //         .map((state) => (
+  //         .filter((search) => search !== null)
+  //         .map((search) => (
 
-  //             {state.postID}
-  //              {state.imageUrl}
-  //            {state.title}
+  //             {search.postID}
+  //              {search.imageUrl}
+  //            {search.title}
 
   //         ));
   //   }
@@ -48,15 +48,39 @@ export default function SearchBoard() {
   return (
     <div className={styles.searchboard}>
       <Header></Header>
+      <h1>{search}</h1>
       <div className={styles.container}>
         {[...Array(4)].map((_, colIndex) => (
           <div key={colIndex}>
             {[...Array(4)].map((_, rowIndex) => {
               const itemIndex = rowIndex * 4 + colIndex;
               const item = data[itemIndex];
+
+              const filterResult = data.filter((p) => {
+                return (
+                  p.title
+                    .replace(" ", "")
+                    .toLocaleLowerCase()
+                    .includes(search.toLocaleLowerCase().replace(" ", "")) ||
+                  p.body
+                    .replace(" ", "")
+                    .toLocaleLowerCase()
+                    .includes(search.toLocaleLowerCase().replace(" ", "")) ||
+                  p.tag
+                    .replace(" ", "")
+                    .toLocaleLowerCase()
+                    .includes(search.toLocaleLowerCase().replace(" ", "")) ||
+                  p.nickname
+                    .replace(" ", "")
+                    .toLocaleLowerCase()
+                    .includes(search.toLocaleLowerCase().replace(" ", ""))
+                );
+              });
+
               if (!item) return null;
               return (
                 <div className={styles.bottom}>
+                  <h1>{search}</h1>
                   <div
                     key={item.photo_id}
                     className={styles.rect}
