@@ -63,7 +63,10 @@ function MentoCalendar({ setIsCalendarOpen }) {
       }),
     })
       .then((response) => response.json())
-      .then((result) => console.log("결과: ", availableDates));
+      .then((result) => {
+        console.log("결과: ", availableDates, result);
+        setIsCalendarOpen(false);
+      });
   };
 
   return (
@@ -155,7 +158,12 @@ function MentoCalendar({ setIsCalendarOpen }) {
                 </p>
               </div>
               <div className={styles.btn}>
-                <button onClick={() => setIsCalendarOpen(false)}>
+                <button
+                  onClick={() => {
+                    setIsCalendarOpen(false);
+                    datepick();
+                  }}
+                >
                   설정 완료
                 </button>
               </div>
