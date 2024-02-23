@@ -188,7 +188,7 @@ const SignUp = () => {
                         ? "inputLogin"
                         : "err_gender"
                     }
-                    value={false}
+                    value="여성"
                     id="female"
                   />
                   <label for="female">여성</label>
@@ -201,7 +201,7 @@ const SignUp = () => {
                     }}
                     className={!message ? "inputLogin" : "err_gender"}
                     // value="male"
-                    value={true}
+                    value="남성"
                     id="male"
                   />
                   <label for="male">남성</label>

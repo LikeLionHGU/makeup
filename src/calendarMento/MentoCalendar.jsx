@@ -31,6 +31,7 @@ function MentoCalendar() {
   const [memberId, setmemberId] = useState("");
 
   const [selectedDate, setselectedDate] = useState([]);
+  const [availableDates, setavailableDates] = useState([]);
 
   useEffect(() => {
     calendarRef.current.setFocus();
@@ -46,7 +47,8 @@ function MentoCalendar() {
     const month = ("0" + (date.getMonth() + 1)).slice(-2);
     const day = ("0" + date.getDate()).slice(-2);
     const dateString = year + "-" + month + "-" + day;
-    fetch("https://api.zionhann.shop/app/makeup/reservation/mento", {
+    fetch("https://api.zionhann.shop/app/makeup/posts/calendar/{memberId}", {
+      // fetch("https://api.zionhann.shop/app/makeup/reservation/mento", {
       method: "POST",
       headers: {
         "Content-Type": `application/json`,
