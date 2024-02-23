@@ -1,0 +1,16 @@
+.content {
+  /* display: flex; */
+}
+.input {
+  position: relative;
+}
+.input input {
+  height: 100px;
+}
+
+.content .image {
+  position: absolute;
+  right: 45px;
+  top: 0;
+  bottom: 0;
+}
