@@ -119,7 +119,6 @@ const LogIn = () => {
               </span>
             </div>
             <div className={styles.warning}>
-              {/* <img src="warningicon" /> */}
               <p>{message}</p>
             </div>
           </div>

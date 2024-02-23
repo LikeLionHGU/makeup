@@ -14,7 +14,11 @@ import SignUp from "./account/SignUp";
 import Complete from "./account/Complete";
 import Calendarr from "./calendar/Calendarr";
 import MentoCalendar from "./calendarMento/MentoCalendar";
+
+import SearchBoard from "./search/SearchBoard";
+
 import UploadPost from "./uploadPost/UploadPost";
+
 
 function App() {
   return (
@@ -30,6 +34,7 @@ function App() {
           <Route path="/calendarmento" element={<MentoCalendar />}></Route>
 
           <Route path="/board" element={<BoardList />} />
+          <Route path="/searchboard" element={<SearchBoard />} />
           <Route path="/write" element={<BoardWrite />} />
           <Route path="/uploadPost" element={<UploadPost />} />
         </Routes>

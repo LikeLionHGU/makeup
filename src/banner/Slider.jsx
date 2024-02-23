@@ -45,9 +45,7 @@ export default function Slider() {
       pagination={{ clickable: true }}
     >
       <SwiperSlide>
-        <div className="underbar">
-          <img src={banner1} />
-        </div>
+        <img src={banner1} />
       </SwiperSlide>
       <SwiperSlide>
         <img src={banner2} />
